@@ -1,0 +1,8 @@
+INSERT INTO [dbo].[Categories] ([Name], [Description]) VALUES (N'MongoDB', N'数据库')
+INSERT INTO [dbo].[Categories] ([Name], [Description]) VALUES (N'领域驱动', N'框架设计')
+INSERT INTO [dbo].[Categories] ([Name], [Description]) VALUES (N'C#', N'编程C#语言')
+INSERT INTO [dbo].[Categories] ([Name], [Description]) VALUES (N'操作系统', N'计算机操作系统')
+INSERT INTO [dbo].[Categories] ([Name], [Description]) VALUES (N'No-SQL', N'非关系数据库')
+INSERT INTO [dbo].[Categories] ([Name], [Description]) VALUES (N'Java', N'编程Java语言')
+INSERT INTO [dbo].[Categories] ([Name], [Description]) VALUES (N'算法', N'计算机算法')
+INSERT INTO [dbo].[Categories] ([Name], [Description]) VALUES (N'Asp.net', N'网站开发')

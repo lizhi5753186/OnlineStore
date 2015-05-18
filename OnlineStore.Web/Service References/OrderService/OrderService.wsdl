@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="OrderService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8003/OrderService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8003/OrderService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" />
+      <xsd:import schemaLocation="http://localhost:8003/OrderService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IOrderService_GetShoppingCartItemCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShoppingCartItemCount" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetShoppingCartItemCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShoppingCartItemCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetShoppingCartItemCount_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q1:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_AddProductToCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductToCart" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_AddProductToCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductToCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_AddProductToCart_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q2:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetShoppingCart_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetShoppingCart" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetShoppingCart_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetShoppingCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetShoppingCart_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q3:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateShoppingCartItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateShoppingCartItem" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateShoppingCartItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateShoppingCartItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_UpdateShoppingCartItem_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q4:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteShoppingCartItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteShoppingCartItem" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteShoppingCartItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteShoppingCartItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_DeleteShoppingCartItem_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q5:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Checkout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Checkout" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Checkout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Checkout_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q6:FaultData" />
+  </wsdl:message>
+  <wsdl:portType name="IOrderService">
+    <wsdl:operation name="GetShoppingCartItemCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetShoppingCartItemCount" message="tns:IOrderService_GetShoppingCartItemCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetShoppingCartItemCountResponse" message="tns:IOrderService_GetShoppingCartItemCount_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/GetShoppingCartItemCountFaultDataFault" name="FaultDataFault" message="tns:IOrderService_GetShoppingCartItemCount_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductToCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/AddProductToCart" message="tns:IOrderService_AddProductToCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/AddProductToCartResponse" message="tns:IOrderService_AddProductToCart_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/AddProductToCartFaultDataFault" name="FaultDataFault" message="tns:IOrderService_AddProductToCart_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShoppingCart">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetShoppingCart" message="tns:IOrderService_GetShoppingCart_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetShoppingCartResponse" message="tns:IOrderService_GetShoppingCart_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/GetShoppingCartFaultDataFault" name="FaultDataFault" message="tns:IOrderService_GetShoppingCart_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateShoppingCartItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/UpdateShoppingCartItem" message="tns:IOrderService_UpdateShoppingCartItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/UpdateShoppingCartItemResponse" message="tns:IOrderService_UpdateShoppingCartItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/UpdateShoppingCartItemFaultDataFault" name="FaultDataFault" message="tns:IOrderService_UpdateShoppingCartItem_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShoppingCartItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/DeleteShoppingCartItem" message="tns:IOrderService_DeleteShoppingCartItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/DeleteShoppingCartItemResponse" message="tns:IOrderService_DeleteShoppingCartItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/DeleteShoppingCartItemFaultDataFault" name="FaultDataFault" message="tns:IOrderService_DeleteShoppingCartItem_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Checkout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/Checkout" message="tns:IOrderService_Checkout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/CheckoutResponse" message="tns:IOrderService_Checkout_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/CheckoutFaultDataFault" name="FaultDataFault" message="tns:IOrderService_Checkout_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IOrderService" type="tns:IOrderService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetShoppingCartItemCount">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetShoppingCartItemCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductToCart">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/AddProductToCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetShoppingCart">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetShoppingCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateShoppingCartItem">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/UpdateShoppingCartItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteShoppingCartItem">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/DeleteShoppingCartItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Checkout">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/Checkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderService">
+    <wsdl:port name="BasicHttpBinding_IOrderService" binding="tns:BasicHttpBinding_IOrderService">
+      <soap:address location="http://localhost:8003/OrderService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

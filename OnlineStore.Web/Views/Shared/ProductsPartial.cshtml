@@ -1,0 +1,63 @@
+﻿
+@model IEnumerable<OnlineStore.Web.ProductService.ProductDto>
+
+@if (ViewBag.CategoryName != null)
+{
+    <h2>商品分类：@ViewBag.CategoryName</h2>
+}
+<table width="774" border="0" cellspacing="0" cellpadding="0">
+
+    <tr>
+        <td height="479">&nbsp;</td>
+        <td align="left" valign="top" width="100%">
+            @{
+                if (Model.Any())
+                {
+                    foreach(var model in Model)
+                    {
+                <table width="207" height="234" border="0" cellpadding="0" cellspacing="0" class="productleft_top">
+                    <tr>
+                        <td align="left" valign="top">
+                            <table width="222" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td height="200" valign="top">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td height="45"><span class="product_name">@Html.ActionLink(model.Name, "ProductDetail", "Home", new { id = model.Id }, null)</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="147" align="center"><a href="@Url.Action("ProductDetail", "Home", new { id = model.Id })">
+                                                    <img src="@Url.Content(string.Format("~/Images/Products/{0}", model.ImageUrl))" alt="" width="159" height="160" border="0"></a></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="35">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td width="24%" height="24"><span class="style7"><a href="@Url.Action("ProductDetail", "Home", new { id = model.Id })" id="blue1">详细信息</a></span></td>
+                                                <td width="5%">&nbsp;</td>
+                                                <td width="15%" height="24"><span class="style7"><a href="@Url.Action("AddToCart", "Home", new { productID = model.Id, items = "1" })" id="blue1">购买</a></span></td>
+                                                <td width="5%">&nbsp;</td>
+                                                <td width="51%" class="price">@Html.Encode(string.Format("{0:N2} {1}", model.UnitPrice, "元"))</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                    }
+                }
+                else
+                {
+                <h4>没有找到任何商品</h4>
+                }
+            }
+
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+</table>

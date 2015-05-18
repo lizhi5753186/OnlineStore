@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Domain", "OnlineStore.Domain\OnlineStore.Domain.csproj", "{1AE7732F-2FAF-407E-89DD-BAD81C4132E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Infrastructure", "OnlineStore.Infrastructure\OnlineStore.Infrastructure.csproj", "{9DDE33CC-CF3C-436E-8A5F-4E1F0F8B603E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.ServiceContracts", "OnlineStore.ServiceContract\OnlineStore.ServiceContracts.csproj", "{D46D13DD-1E1A-451B-AD17-42ED3FC54EAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Web", "OnlineStore.Web\OnlineStore.Web.csproj", "{4EDD833D-E745-4A23-B244-447EA946B112}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4B3BA5F-A38D-4E52-B49E-6D69E8619016} = {C4B3BA5F-A38D-4E52-B49E-6D69E8619016}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Repositories", "OnlineStore.Repositories\OnlineStore.Repositories.csproj", "{30AFAB37-57BE-459C-A36A-5A72BBF77529}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Application", "OnlineStore.Application\OnlineStore.Application.csproj", "{C4B3BA5F-A38D-4E52-B49E-6D69E8619016}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4C91BC6B-3CCF-4F21-B1C0-FCB0F7C15357}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AE7732F-2FAF-407E-89DD-BAD81C4132E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE7732F-2FAF-407E-89DD-BAD81C4132E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE7732F-2FAF-407E-89DD-BAD81C4132E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE7732F-2FAF-407E-89DD-BAD81C4132E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DDE33CC-CF3C-436E-8A5F-4E1F0F8B603E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DDE33CC-CF3C-436E-8A5F-4E1F0F8B603E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DDE33CC-CF3C-436E-8A5F-4E1F0F8B603E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DDE33CC-CF3C-436E-8A5F-4E1F0F8B603E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D46D13DD-1E1A-451B-AD17-42ED3FC54EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46D13DD-1E1A-451B-AD17-42ED3FC54EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46D13DD-1E1A-451B-AD17-42ED3FC54EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46D13DD-1E1A-451B-AD17-42ED3FC54EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDD833D-E745-4A23-B244-447EA946B112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDD833D-E745-4A23-B244-447EA946B112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDD833D-E745-4A23-B244-447EA946B112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDD833D-E745-4A23-B244-447EA946B112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30AFAB37-57BE-459C-A36A-5A72BBF77529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30AFAB37-57BE-459C-A36A-5A72BBF77529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30AFAB37-57BE-459C-A36A-5A72BBF77529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30AFAB37-57BE-459C-A36A-5A72BBF77529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B3BA5F-A38D-4E52-B49E-6D69E8619016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B3BA5F-A38D-4E52-B49E-6D69E8619016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B3BA5F-A38D-4E52-B49E-6D69E8619016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B3BA5F-A38D-4E52-B49E-6D69E8619016}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

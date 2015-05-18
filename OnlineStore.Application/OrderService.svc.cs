@@ -1,0 +1,96 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using OnlineStore.Domain.Model;
+using OnlineStore.Infrastructure;
+using OnlineStore.ServiceContracts;
+using OnlineStore.ServiceContracts.ModelDTOs;
+
+namespace OnlineStore.Application
+{
+   [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
+    public class OrderService : IOrderService
+   {
+       private readonly IOrderService _orderServiceImp;
+
+       public OrderService()
+       {
+           _orderServiceImp = ServiceLocator.Instance.GetService<IOrderService>();
+       }
+
+       public void AddProductToCart(Guid customerId, Guid productId, int quantity)
+        {
+           try
+           {
+               _orderServiceImp.AddProductToCart(customerId, productId, quantity);
+           }
+           catch (Exception ex)
+           {
+               throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+           }
+        }
+
+        public ShoppingCartDto GetShoppingCart(Guid customerId)
+        {
+            try
+            {
+                return _orderServiceImp.GetShoppingCart(customerId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public int GetShoppingCartItemCount(Guid userId)
+        {
+            try
+            {
+                return _orderServiceImp.GetShoppingCartItemCount(userId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void UpdateShoppingCartItem(Guid shoppingCartItemId, int quantity)
+        {
+            try
+            {
+                _orderServiceImp.UpdateShoppingCartItem(shoppingCartItemId, quantity);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void DeleteShoppingCartItem(Guid shoppingCartItemId)
+        {
+            try
+            {
+                _orderServiceImp.DeleteShoppingCartItem(shoppingCartItemId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public OrderDto Checkout(Guid customerId)
+        {
+            try
+            {
+                return _orderServiceImp.Checkout(customerId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+   }
+}
