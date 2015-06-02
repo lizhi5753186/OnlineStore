@@ -1,0 +1,63 @@
+﻿@using OnlineStore.Web;
+
+
+@model IEnumerable<OnlineStore.Web.OrderService.OrderDto>
+
+@{
+    ViewBag.Title = "我的订单";
+}
+
+<hgroup class="title">
+    <h1>@Html.Image("SalesOrder_32.png")&nbsp;@ViewBag.Title</h1>
+</hgroup>
+
+@if (Model.Any())
+{
+    var grid = new WebGrid(Model, defaultSort: "CreatedDate", canSort: false, selectionFieldName: "Id");
+    @grid.GetHtml(tableStyle: "webgrid",
+    headerStyle: "webgrid-header",
+    footerStyle: "webgrid-footer",
+    rowStyle: "webgrid-row",
+    alternatingRowStyle: "webgrid-alternating-row",
+    columns: grid.Columns(
+    grid.Column(
+        style: "webgrid-guid",
+        format: @<text>@Html.ActionLink((string)item.IdText.ToUpper(), "Order", "Home", new { id = item.Id }, new { title = item.Id })</text>,
+        columnName: "Id",
+        header: "编号"),
+    grid.Column(
+        style: "webgrid-numeric",
+        columnName: "TotalLines",
+        header: "条目数"),
+    grid.Column(
+        style: "webgrid-numeric",
+        columnName: "TotalAmount",
+        header: "总金额"),
+    grid.Column(
+        style: "webgrid-datetime",
+        columnName: "CreatedDateText",
+        header: "创建日期"),
+    grid.Column(
+        style: "webgrid-datetime",
+        columnName: "DispatchedDateText",
+        header: "发货日期"),
+    grid.Column(
+        style: "webgrid-datetime",
+        columnName: "DeliveredDateText",
+        header: "收货日期"),
+    grid.Column(
+        style: "webgrid-center",
+        columnName: "StatusText",
+        header: "当前状态"),
+    grid.Column(
+        style: "webgrid-center",
+        columnName: "Confirm",
+        header: "确认收货",
+        format: item => item.CanConfirm ? Html.ActionLink("确认收货", "Confirm", "Home", new { id = item.ID }, new { onclick = "return confirm('请确保您已经收到了货品，否则可能财物两空。是否继续？');" }) : MvcHtmlString.Create("&nbsp;"))))
+}
+else
+{
+    <div>
+        <span>没有任何订单信息。</span>
+    </div>
+}

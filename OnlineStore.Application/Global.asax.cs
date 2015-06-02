@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
 using OnlineStore.Repositories.EntityFramework;
 
 namespace OnlineStore.Application
@@ -14,6 +10,8 @@ namespace OnlineStore.Application
         {
             OnlineStoreDbContextInitailizer.Initialize();
             ApplicationService.Initialize();
+            log4net.Config.XmlConfigurator.Configure();
+            //ServiceLocator.Instance.Register<IEventHandler<OrderConfirmedEvent>, SendEmailHandler>();
         }
 
         protected void Session_Start(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using OnlineStore.Web
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
     <title>online Store</title>
@@ -21,13 +23,25 @@
                                 <li>@Html.ActionLink("首页", "Index", "Home")</li>
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                <li>@Html.ActionLink("我的", "Account", "Account")
+                                <li>@Html.ActionLink("我的", "Manage", "Account")
                                     <ul>
-                                        <li>@Html.ActionLink("订单", "SalesOrders", "Home")</li>
-                                        <li>@Html.ActionLink("账户", "Account", "Account")</li>
+                                        <li>@Html.ActionLink("订单", "Orders", "Home")</li>
+                                        <li>@Html.ActionLink("账户", "Manage", "Account")</li>
                                         <li>@Html.ActionLink("购物篮", "ShoppingCart", "Home")</li>
                                     </ul>
                                 </li>
+                                }
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li>@Html.ActionLinkWithPermission("管理", "Administration", "Admin", PermissionKeys.Administrators | PermissionKeys.Buyers | PermissionKeys.SalesReps)
+                                        <ul>
+                                            <li>@Html.ActionLinkWithPermission("销售订单管理", "Orders", "Admin", PermissionKeys.Administrators | PermissionKeys.SalesReps)</li>
+                                            <li>@Html.ActionLinkWithPermission("商品分类管理", "Categories", "Admin", PermissionKeys.Administrators | PermissionKeys.Buyers)</li>
+                                            <li>@Html.ActionLinkWithPermission("商品信息管理", "Products", "Admin", PermissionKeys.Administrators | PermissionKeys.Buyers)</li>
+                                            <li>@Html.ActionLinkWithPermission("用户账户管理", "UserAccounts", "Admin", PermissionKeys.Administrators)</li>
+                                            <li>@Html.ActionLinkWithPermission("用户角色管理", "Roles", "Admin", PermissionKeys.Administrators)</li>
+                                        </ul>
+                                    </li>
                                 }
                                 <li>@Html.ActionLink("关于", "About", "Home")
                                     <ul>

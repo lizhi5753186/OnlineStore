@@ -13,5 +13,7 @@
         public string ImageUrl { get; set; }
 
         public bool? IsNew { get; set; }
+
+        public CategoryDto Category { get; set; }
     }
 }

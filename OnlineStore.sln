@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4C91BC
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Events", "OnlineStore.Events\OnlineStore.Events.csproj", "{F165ABC2-F76A-4FD7-8675-833264855221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Events.Handlers", "OnlineStore.Events.Handlers\OnlineStore.Events.Handlers.csproj", "{2471E6B9-1030-48B8-BBC4-5018A221FBE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{C4B3BA5F-A38D-4E52-B49E-6D69E8619016}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4B3BA5F-A38D-4E52-B49E-6D69E8619016}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4B3BA5F-A38D-4E52-B49E-6D69E8619016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F165ABC2-F76A-4FD7-8675-833264855221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F165ABC2-F76A-4FD7-8675-833264855221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F165ABC2-F76A-4FD7-8675-833264855221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F165ABC2-F76A-4FD7-8675-833264855221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2471E6B9-1030-48B8-BBC4-5018A221FBE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2471E6B9-1030-48B8-BBC4-5018A221FBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2471E6B9-1030-48B8-BBC4-5018A221FBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2471E6B9-1030-48B8-BBC4-5018A221FBE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,7 +16,7 @@ namespace OnlineStore.Repositories.EntityFramework
         {
             return GetBySpecification(Specification<ShoppingCartItem>.Eval
                 (sci => sci.ShoopingCart.Id == shoppingCart.Id &&
-                 sci.Product.Id == product.Id));
+                 sci.Product.Id == product.Id), elp => elp.Product);
         }
 
         #endregion

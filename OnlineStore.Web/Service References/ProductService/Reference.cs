@@ -23,6 +23,9 @@ namespace OnlineStore.Web.ProductService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OnlineStore.Web.ProductService.CategoryDto CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -47,6 +50,19 @@ namespace OnlineStore.Web.ProductService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OnlineStore.Web.ProductService.CategoryDto Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
             }
         }
         
@@ -140,6 +156,83 @@ namespace OnlineStore.Web.ProductService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class CategoryDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
     [System.SerializableAttribute()]
     public partial class FaultData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -217,21 +310,21 @@ namespace OnlineStore.Web.ProductService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductCategorizationDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
     [System.SerializableAttribute()]
-    public partial class CategoryDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ProductCategorizationDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
+        private System.Guid CategoryIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
+        private System.Guid ProductIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -244,14 +337,14 @@ namespace OnlineStore.Web.ProductService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
+        public System.Guid CategoryId {
             get {
-                return this.DescriptionField;
+                return this.CategoryIdField;
             }
             set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
+                if ((this.CategoryIdField.Equals(value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
                 }
             }
         }
@@ -270,14 +363,14 @@ namespace OnlineStore.Web.ProductService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
+        public System.Guid ProductId {
             get {
-                return this.NameField;
+                return this.ProductIdField;
             }
             set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((this.ProductIdField.Equals(value) != true)) {
+                    this.ProductIdField = value;
+                    this.RaisePropertyChanged("ProductId");
                 }
             }
         }
@@ -295,6 +388,62 @@ namespace OnlineStore.Web.ProductService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="", ConfigurationName="ProductService.IProductService")]
     public interface IProductService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/CreateProducts", ReplyAction="urn:IProductService/CreateProductsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/CreateProductsFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.ProductService.ProductDto[] CreateProducts(OnlineStore.Web.ProductService.ProductDto[] productsDtos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/CreateProducts", ReplyAction="urn:IProductService/CreateProductsResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDto[]> CreateProductsAsync(OnlineStore.Web.ProductService.ProductDto[] productsDtos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/CreateCategories", ReplyAction="urn:IProductService/CreateCategoriesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/CreateCategoriesFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.ProductService.CategoryDto[] CreateCategories(OnlineStore.Web.ProductService.CategoryDto[] categoriDtos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/CreateCategories", ReplyAction="urn:IProductService/CreateCategoriesResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.ProductService.CategoryDto[]> CreateCategoriesAsync(OnlineStore.Web.ProductService.CategoryDto[] categoriDtos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/UpdateProducts", ReplyAction="urn:IProductService/UpdateProductsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/UpdateProductsFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.ProductService.ProductDto[] UpdateProducts(OnlineStore.Web.ProductService.ProductDto[] productsDtos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/UpdateProducts", ReplyAction="urn:IProductService/UpdateProductsResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDto[]> UpdateProductsAsync(OnlineStore.Web.ProductService.ProductDto[] productsDtos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/UpdateCategories", ReplyAction="urn:IProductService/UpdateCategoriesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/UpdateCategoriesFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.ProductService.CategoryDto[] UpdateCategories(OnlineStore.Web.ProductService.CategoryDto[] categoriDtos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/UpdateCategories", ReplyAction="urn:IProductService/UpdateCategoriesResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.ProductService.CategoryDto[]> UpdateCategoriesAsync(OnlineStore.Web.ProductService.CategoryDto[] categoriDtos);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/DeleteProducts", ReplyAction="urn:IProductService/DeleteProductsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/DeleteProductsFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        void DeleteProducts(string[] produList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/DeleteProducts", ReplyAction="urn:IProductService/DeleteProductsResponse")]
+        System.Threading.Tasks.Task DeleteProductsAsync(string[] produList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/DeleteCategories", ReplyAction="urn:IProductService/DeleteCategoriesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/DeleteCategoriesFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        void DeleteCategories(string[] categoryList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/DeleteCategories", ReplyAction="urn:IProductService/DeleteCategoriesResponse")]
+        System.Threading.Tasks.Task DeleteCategoriesAsync(string[] categoryList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/CategorizeProduct", ReplyAction="urn:IProductService/CategorizeProductResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/CategorizeProductFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.ProductService.ProductCategorizationDto CategorizeProduct(System.Guid productId, System.Guid categoryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/CategorizeProduct", ReplyAction="urn:IProductService/CategorizeProductResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductCategorizationDto> CategorizeProductAsync(System.Guid productId, System.Guid categoryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/UncategorizeProduct", ReplyAction="urn:IProductService/UncategorizeProductResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/UncategorizeProductFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        void UncategorizeProduct(System.Guid productId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/UncategorizeProduct", ReplyAction="urn:IProductService/UncategorizeProductResponse")]
+        System.Threading.Tasks.Task UncategorizeProductAsync(System.Guid productId);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetProducts", ReplyAction="urn:IProductService/GetProductsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/GetProductsFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
@@ -364,6 +513,70 @@ namespace OnlineStore.Web.ProductService {
         
         public ProductServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public OnlineStore.Web.ProductService.ProductDto[] CreateProducts(OnlineStore.Web.ProductService.ProductDto[] productsDtos) {
+            return base.Channel.CreateProducts(productsDtos);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDto[]> CreateProductsAsync(OnlineStore.Web.ProductService.ProductDto[] productsDtos) {
+            return base.Channel.CreateProductsAsync(productsDtos);
+        }
+        
+        public OnlineStore.Web.ProductService.CategoryDto[] CreateCategories(OnlineStore.Web.ProductService.CategoryDto[] categoriDtos) {
+            return base.Channel.CreateCategories(categoriDtos);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.ProductService.CategoryDto[]> CreateCategoriesAsync(OnlineStore.Web.ProductService.CategoryDto[] categoriDtos) {
+            return base.Channel.CreateCategoriesAsync(categoriDtos);
+        }
+        
+        public OnlineStore.Web.ProductService.ProductDto[] UpdateProducts(OnlineStore.Web.ProductService.ProductDto[] productsDtos) {
+            return base.Channel.UpdateProducts(productsDtos);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDto[]> UpdateProductsAsync(OnlineStore.Web.ProductService.ProductDto[] productsDtos) {
+            return base.Channel.UpdateProductsAsync(productsDtos);
+        }
+        
+        public OnlineStore.Web.ProductService.CategoryDto[] UpdateCategories(OnlineStore.Web.ProductService.CategoryDto[] categoriDtos) {
+            return base.Channel.UpdateCategories(categoriDtos);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.ProductService.CategoryDto[]> UpdateCategoriesAsync(OnlineStore.Web.ProductService.CategoryDto[] categoriDtos) {
+            return base.Channel.UpdateCategoriesAsync(categoriDtos);
+        }
+        
+        public void DeleteProducts(string[] produList) {
+            base.Channel.DeleteProducts(produList);
+        }
+        
+        public System.Threading.Tasks.Task DeleteProductsAsync(string[] produList) {
+            return base.Channel.DeleteProductsAsync(produList);
+        }
+        
+        public void DeleteCategories(string[] categoryList) {
+            base.Channel.DeleteCategories(categoryList);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCategoriesAsync(string[] categoryList) {
+            return base.Channel.DeleteCategoriesAsync(categoryList);
+        }
+        
+        public OnlineStore.Web.ProductService.ProductCategorizationDto CategorizeProduct(System.Guid productId, System.Guid categoryId) {
+            return base.Channel.CategorizeProduct(productId, categoryId);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductCategorizationDto> CategorizeProductAsync(System.Guid productId, System.Guid categoryId) {
+            return base.Channel.CategorizeProductAsync(productId, categoryId);
+        }
+        
+        public void UncategorizeProduct(System.Guid productId) {
+            base.Channel.UncategorizeProduct(productId);
+        }
+        
+        public System.Threading.Tasks.Task UncategorizeProductAsync(System.Guid productId) {
+            return base.Channel.UncategorizeProductAsync(productId);
         }
         
         public OnlineStore.Web.ProductService.ProductDto[] GetProducts() {

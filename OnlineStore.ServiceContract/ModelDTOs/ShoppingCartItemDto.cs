@@ -8,7 +8,7 @@
 
         public ProductDto Product { get; set; }
 
-        public decimal ItemAmount { get; set; }
+        public decimal? ItemAmount { get; set; }
 
         public string ShoppingCartId { get; set; }
     }

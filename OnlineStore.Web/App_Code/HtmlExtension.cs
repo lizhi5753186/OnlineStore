@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
+using OnlineStore.Web.UserService;
 
 namespace OnlineStore.Web
 {
@@ -90,6 +94,79 @@ namespace OnlineStore.Web
             aTag.MergeAttribute("style", "cursor: pointer");
             aTag.MergeAttribute("onclick", string.Format("javascript: $('#{0}').submit()", formName));
             return MvcHtmlString.Create(aTag.ToString());
+        }
+        #endregion
+
+        #region ImageActionLink
+        public static MvcHtmlString ImageActionLink(this HtmlHelper helper, string imgSrc, string altText, string text, string action, string controller, object routeValues, object htmlAttributes)
+        {
+            var url = UrlHelper.GenerateUrl(null, action, controller, new RouteValueDictionary(routeValues), helper.RouteCollection, helper.ViewContext.RequestContext, true);
+            TagBuilder tbImg = new TagBuilder("img");
+            tbImg.MergeAttribute("src", imgSrc);
+            tbImg.MergeAttribute("alt", altText);
+            tbImg.MergeAttribute("border", "0");
+            tbImg.MergeAttribute("title", altText);
+            var imgString = tbImg.ToString(TagRenderMode.SelfClosing);
+            TagBuilder tbA = new TagBuilder("a")
+            {
+                InnerHtml = imgString
+            };
+            if (!string.IsNullOrEmpty(text))
+            {
+                tbA.InnerHtml += HttpUtility.HtmlEncode(text);
+            }
+            tbA.MergeAttribute("href", url);
+            if (htmlAttributes != null)
+            {
+                IDictionary<string, object> additionAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+                tbA.MergeAttributes<string, object>(additionAttributes);
+            }
+            return MvcHtmlString.Create(tbA.ToString());
+        }
+
+        public static MvcHtmlString ImageActionLink(this HtmlHelper helper, string imgSrc, string altText, string action, string controller, object routeValues, object htmlAttributes)
+        {
+            return ImageActionLink(helper, imgSrc, altText, null, action, controller, routeValues, htmlAttributes);
+        }
+
+        public static MvcHtmlString ImageActionLink(this HtmlHelper helper, string imgSrc, string altText, string action, string controller, object routeValues)
+        {
+            return ImageActionLink(helper, imgSrc, altText, action, controller, routeValues, null);
+        }
+
+        public static MvcHtmlString ImageActionLink(this HtmlHelper helper, string imgSrc, string altText, string text, string action, string controller, object routeValues)
+        {
+            return ImageActionLink(helper, imgSrc, altText, text, action, controller, routeValues, null);
+        }
+
+        public static MvcHtmlString ImageActionLink(this HtmlHelper helper, string imgSrc, string altText, string text, string action, string controller)
+        {
+            return ImageActionLink(helper, imgSrc, altText, text, action, controller, null);
+        }
+        #endregion
+
+        #region ActionLinkWithPermission
+        public static MvcHtmlString ActionLinkWithPermission(this HtmlHelper helper, string linkText, string action, string controller, PermissionKeys required)
+        {
+            if (helper == null ||
+                helper.ViewContext == null ||
+                helper.ViewContext.RequestContext == null ||
+                helper.ViewContext.RequestContext.HttpContext == null ||
+                helper.ViewContext.RequestContext.HttpContext.User == null ||
+                helper.ViewContext.RequestContext.HttpContext.User.Identity == null)
+                return MvcHtmlString.Empty;
+
+            using (var proxy = new UserServiceClient())
+            {
+                var role = proxy.GetRoleByUserName(helper.ViewContext.RequestContext.HttpContext.User.Identity.Name);
+                if (role == null)
+                    return MvcHtmlString.Empty;
+                var keyName = role.Name;
+                var permissionKey = (PermissionKeys)Enum.Parse(typeof(PermissionKeys), keyName);
+                return (permissionKey & required) == permissionKey ? 
+                    MvcHtmlString.Create(HtmlHelper.GenerateLink(helper.ViewContext.RequestContext, helper.RouteCollection, linkText, null, action, controller, null, null)) 
+                    : MvcHtmlString.Empty;
+            }
         }
         #endregion
     }

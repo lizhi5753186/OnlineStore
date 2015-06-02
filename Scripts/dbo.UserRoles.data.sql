@@ -1,0 +1,4 @@
+﻿INSERT INTO [dbo].[UserRoles] ([ID], [UserID], [RoleID]) VALUES (N'14eeae0a-d5e5-4fec-a0c7-34e50a81efcc', N'3755a9dc-fa85-412a-87e9-146082db1a68', N'068d4ff3-dda8-4274-8c7d-a0cea5a3b3d3')
+INSERT INTO [dbo].[UserRoles] ([ID], [UserID], [RoleID]) VALUES (N'cb187795-9566-4262-8267-5d062bffaffd', N'4e5e6fbd-68fb-4619-b30b-17acbc1061c4', N'4688f0c4-39d0-4bef-babd-08bb64615c69')
+INSERT INTO [dbo].[UserRoles] ([ID], [UserID], [RoleID]) VALUES (N'0ae8d163-54fc-44ad-98ec-912984498948', N'94802ce2-18ce-44b1-9c56-599bd8c25dc2', N'80181f68-890d-4956-bbb7-0782e5929860')
+INSERT INTO [dbo].[UserRoles] ([ID], [UserID], [RoleID]) VALUES (N'f742b0fb-e217-4e64-81b6-cc699199c6ce', N'27f2c2d1-5219-48d9-8e1f-185909d7494f', N'7d25079e-23b6-4f8f-8b37-eabf7ab18e51')

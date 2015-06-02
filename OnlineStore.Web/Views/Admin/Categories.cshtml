@@ -1,0 +1,47 @@
+﻿@using OnlineStore.Web;
+@using OnlineStore.Web.ProductService;
+
+@model IEnumerable<CategoryDto>
+
+@{
+    ViewBag.Title = "商品分类管理";
+}
+
+<hgroup class="title">
+    <h1>@Html.Image("Category_32.png")&nbsp;@ViewBag.Title</h1>
+    <h4>请使用下面的工具按钮对商品分类进行增添、编辑或删除的管理操作。单击商品分类的名称同样可以打开该分类的编辑页面。
+    </h4>
+</hgroup>
+
+@if (Model.Any()) {
+    var grid = new WebGrid(Model, defaultSort: "Name", selectionFieldName: "Id");
+    @grid.GetHtml(tableStyle:"webgrid", 
+    headerStyle:"webgrid-header", 
+    footerStyle:"webgrid-footer", 
+    rowStyle:"webgrid-row", 
+    alternatingRowStyle:"webgrid-alternating-row",
+    columns: grid.Columns(
+        grid.Column(
+            format: @<text>@Html.ActionLink((string)item.Name, "EditCategory", "Admin", new {id = item.Id}, null)</text>,
+            columnName: "Name",
+            header: "名称", 
+            canSort: true),
+        grid.Column(
+            columnName: "Description",
+            header: "描述", 
+            canSort: false),
+        grid.Column(
+            style: "webgrid-toolicon",
+            format: @<text>@Html.ImageActionLink(Url.Content("/Images/Edit.png"), "编辑", "EditCategory", "Admin", new {id = item.Id})</text>,
+            header: "",
+            canSort: false),
+            grid.Column(
+            style: "webgrid-toolicon",
+            format: @<text>@Html.ImageActionLink(Url.Content("/Images/Delete.png"), "删除", "DeleteCategory", "Admin", new { id = item.Id }, new { onclick = "return confirm('是否确定删除所选商品分类？');" })</text>,
+            header: "",
+            canSort: false)))
+}
+<p>
+    @Html.ImageActionLink(Url.Content("/Images/Add.png"), "添加", "添加商品分类", "AddCategory", "Admin")
+</p>
+

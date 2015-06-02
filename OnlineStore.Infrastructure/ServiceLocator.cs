@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration.Internal;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Practices.Unity;
@@ -8,6 +10,7 @@ using Microsoft.Practices.Unity.Configuration;
 namespace OnlineStore.Infrastructure
 {
     // 服务定位器的实现
+    [SuppressMessage("ReSharper", "CoVariantArrayConversion")]
     public class ServiceLocator : IServiceProvider
     {
         private readonly IUnityContainer _container;
@@ -16,7 +19,16 @@ namespace OnlineStore.Infrastructure
         private ServiceLocator()
         {
             _container = new UnityContainer();
-            _container.LoadConfiguration();
+            try
+            {
+                _container.LoadConfiguration();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
         public static ServiceLocator Instance
@@ -29,6 +41,16 @@ namespace OnlineStore.Infrastructure
         public T GetService<T>()
         {
             return _container.Resolve<T>();
+        }
+
+        public void Register<TFrom, TTo>() where TTo : TFrom
+        {
+            _container.RegisterType<TFrom, TTo>();
+        }
+
+        public void Register<TFrom, TTo>(string name) where TTo : TFrom
+        {
+            _container.RegisterType<TFrom, TTo>(name);
         }
 
         public IEnumerable<T> ResolveAll<T>()

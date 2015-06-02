@@ -9,10 +9,10 @@ namespace OnlineStore.Domain.Model
         #endregion 
 
         public int Quantity { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         // 包含当前订单项的订单对象
-        public Order Order { get; set; }
+        public virtual Order Order { get; set; }
 
         public decimal ItemAmout 
         {

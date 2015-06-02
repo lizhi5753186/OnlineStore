@@ -10,7 +10,7 @@
     <h1>@Html.Image("User_32.png")&nbsp;@ViewBag.Title</h1>
 </hgroup>
 
-@using (Html.BeginForm("Account", "Account", FormMethod.Post, new { id = "UpdateAccountForm" }))
+@using (Html.BeginForm("Manage", "Account", FormMethod.Post, new { id = "UpdateAccountForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)

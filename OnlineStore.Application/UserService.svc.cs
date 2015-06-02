@@ -69,14 +69,28 @@ namespace OnlineStore.Application
             }
         }
 
-        public void DeleteUsers(UserDto userDto)
+        public void DeleteUsers(List<UserDto> userDtos)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _userServiceImp.DeleteUsers(userDtos);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
         }
 
         public IList<UserDto> UpdateUsers(List<UserDto> userDataObjects)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _userServiceImp.UpdateUsers(userDataObjects);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
         }
 
         public UserDto GetUserByKey(Guid id)
@@ -108,6 +122,126 @@ namespace OnlineStore.Application
             try
             {
                 return _userServiceImp.GetUserByName(userName);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public IList<UserDto> GetUsers()
+        {
+            try
+            {
+                return _userServiceImp.GetUsers();
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public IList<RoleDto> GetRoles()
+        {
+            try
+            {
+                return _userServiceImp.GetRoles();
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public RoleDto GetRoleByKey(Guid id)
+        {
+            try
+            {
+                return _userServiceImp.GetRoleByKey(id);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public IList<RoleDto> CreateRoles(List<RoleDto> roleDataObjects)
+        {
+            try
+            {
+                return _userServiceImp.CreateRoles(roleDataObjects);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public IList<RoleDto> UpdateRoles(List<RoleDto> roleDataObjects)
+        {
+            try
+            {
+                return _userServiceImp.UpdateRoles(roleDataObjects);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void DeleteRoles(List<string> roleList)
+        {
+            try
+            {
+                _userServiceImp.DeleteRoles(roleList);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void AssignRole(Guid userId, Guid roleId)
+        {
+            try
+            {
+                _userServiceImp.AssignRole(userId, roleId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void UnassignRole(Guid userId)
+        {
+            try
+            {
+                _userServiceImp.UnassignRole(userId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public RoleDto GetRoleByUserName(string userName)
+        {
+            try
+            {
+                return _userServiceImp.GetRoleByUserName(userName);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public IList<OrderDto> GetOrdersForUser(string userName)
+        {
+            try
+            {
+                return _userServiceImp.GetOrdersForUser(userName);
             }
             catch (Exception ex)
             {

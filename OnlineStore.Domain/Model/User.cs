@@ -32,7 +32,7 @@ namespace OnlineStore.Domain.Model
             get
             {
                 IEnumerable<Order> result = null;
-                //DomainEvent.Publish<GetUserOrdersEvent>(new GetUserOrdersEvent(this),
+                //DomainEvent.Handle<GetUserOrdersEvent>(new GetUserOrdersEvent(this),
                 //    (e, ret, exc) =>
                 //    {
                 //        result = e.Orders;

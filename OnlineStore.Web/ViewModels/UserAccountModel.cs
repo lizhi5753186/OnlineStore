@@ -43,26 +43,26 @@ namespace OnlineStore.Web.ViewModels
             get { return RegisteredDate.HasValue ? RegisteredDate.Value.ToShortDateString() : "N/A"; }
         }
 
-        //[Display(Name = "角色")]
-        //public RoleDto Role { get; set; }
+        [Display(Name = "角色")]
+        public RoleDto Role { get; set; }
 
-        //[Display(Name = "角色")]
-        //public string RoleStr
-        //{
-        //    get
-        //    {
-        //        if (Role != null && !string.IsNullOrEmpty(Role.Name))
-        //            return Role.Name;
-        //        return "(未指定)";
-        //    }
-        //}
+        [Display(Name = "角色")]
+        public string RoleStr
+        {
+            get
+            {
+                if (Role != null && !string.IsNullOrEmpty(Role.Name))
+                    return Role.Name;
+                return "(未指定)";
+            }
+        }
 
         [Display(Name = "最后登录")]
         [DataType(DataType.Date)]
         public DateTime? LastLogonDate { get; set; }
 
         [Display(Name = "最后登录")]
-        public string DateLastLogonStr
+        public string LastLogonDateStr
         {
             get { return LastLogonDate.HasValue ? LastLogonDate.Value.ToShortDateString() : "N/A"; }
         }
@@ -130,9 +130,9 @@ namespace OnlineStore.Web.ViewModels
                 UserName = d.UserName,
                 Password = d.Password,
                 Email = d.Email,
-                IsDisabled = d.IsDisable,
-                RegisteredDate = d.RegisterDate,
-                LastLogonDate = d.LastLoginDate,
+                IsDisabled = d.IsDisabled,
+                RegisteredDate = d.RegisteredDate,
+                LastLogonDate = d.LastLogonDate,
                 Contact = d.Contact,
                 PhoneNumber = d.PhoneNumber,
                 ContactAddressCity = d.ContactAddress.City,
@@ -155,10 +155,10 @@ namespace OnlineStore.Web.ViewModels
                 Id = this.Id,
                 UserName = this.UserName,
                 Password = this.Password,
-                IsDisable = this.IsDisabled,
+                IsDisabled = this.IsDisabled,
                 Email = this.Email,
-                RegisterDate = this.RegisteredDate,
-                LastLoginDate = this.LastLogonDate,
+                RegisteredDate = this.RegisteredDate,
+                LastLogonDate = this.LastLogonDate,
                 Contact = this.Contact,
                 PhoneNumber = this.PhoneNumber,
                 ContactAddress = new AddressDto()

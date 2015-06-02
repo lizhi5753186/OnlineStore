@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:8003/UserService.svc?xsd=xsd0" />
       <xsd:import schemaLocation="http://localhost:8003/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" />
       <xsd:import schemaLocation="http://localhost:8003/UserService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8003/UserService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserService_CreateUsers_InputMessage">
@@ -88,6 +89,87 @@
   <wsdl:message name="IUserService_GetUserByName_FaultDataFault_FaultMessage">
     <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q9:FaultData" />
   </wsdl:message>
+  <wsdl:message name="IUserService_GetUsers_InputMessage">
+    <wsdl:part name="parameters" element="GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUsers_OutputMessage">
+    <wsdl:part name="parameters" element="GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetUsers_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q10:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoles_InputMessage">
+    <wsdl:part name="parameters" element="GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoles_OutputMessage">
+    <wsdl:part name="parameters" element="GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoles_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q11:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CreateRoles_InputMessage">
+    <wsdl:part name="parameters" element="CreateRoles" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CreateRoles_OutputMessage">
+    <wsdl:part name="parameters" element="CreateRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_CreateRoles_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q12:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UpdateRoles_InputMessage">
+    <wsdl:part name="parameters" element="UpdateRoles" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UpdateRoles_OutputMessage">
+    <wsdl:part name="parameters" element="UpdateRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UpdateRoles_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q13:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_DeleteRoles_InputMessage">
+    <wsdl:part name="parameters" element="DeleteRoles" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_DeleteRoles_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_DeleteRoles_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q14:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_AssignRole_InputMessage">
+    <wsdl:part name="parameters" element="AssignRole" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_AssignRole_OutputMessage">
+    <wsdl:part name="parameters" element="AssignRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_AssignRole_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q15:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UnassignRole_InputMessage">
+    <wsdl:part name="parameters" element="UnassignRole" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UnassignRole_OutputMessage">
+    <wsdl:part name="parameters" element="UnassignRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UnassignRole_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q16:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoleByUserName_InputMessage">
+    <wsdl:part name="parameters" element="GetRoleByUserName" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoleByUserName_OutputMessage">
+    <wsdl:part name="parameters" element="GetRoleByUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetRoleByUserName_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q17:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetOrdersForUser_InputMessage">
+    <wsdl:part name="parameters" element="GetOrdersForUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetOrdersForUser_OutputMessage">
+    <wsdl:part name="parameters" element="GetOrdersForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_GetOrdersForUser_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q18:FaultData" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="CreateUsers">
       <wsdl:input wsaw:Action="urn:IUserService/CreateUsers" message="IUserService_CreateUsers_InputMessage" />
@@ -133,6 +215,51 @@
       <wsdl:input wsaw:Action="urn:IUserService/GetUserByName" message="IUserService_GetUserByName_InputMessage" />
       <wsdl:output wsaw:Action="urn:IUserService/GetUserByNameResponse" message="IUserService_GetUserByName_OutputMessage" />
       <wsdl:fault wsaw:Action="urn:IUserService/GetUserByNameFaultDataFault" name="FaultDataFault" message="IUserService_GetUserByName_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input wsaw:Action="urn:IUserService/GetUsers" message="IUserService_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/GetUsersResponse" message="IUserService_GetUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/GetUsersFaultDataFault" name="FaultDataFault" message="IUserService_GetUsers_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:input wsaw:Action="urn:IUserService/GetRoles" message="IUserService_GetRoles_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/GetRolesResponse" message="IUserService_GetRoles_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/GetRolesFaultDataFault" name="FaultDataFault" message="IUserService_GetRoles_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRoles">
+      <wsdl:input wsaw:Action="urn:IUserService/CreateRoles" message="IUserService_CreateRoles_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/CreateRolesResponse" message="IUserService_CreateRoles_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/CreateRolesFaultDataFault" name="FaultDataFault" message="IUserService_CreateRoles_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRoles">
+      <wsdl:input wsaw:Action="urn:IUserService/UpdateRoles" message="IUserService_UpdateRoles_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/UpdateRolesResponse" message="IUserService_UpdateRoles_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/UpdateRolesFaultDataFault" name="FaultDataFault" message="IUserService_UpdateRoles_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRoles">
+      <wsdl:input wsaw:Action="urn:IUserService/DeleteRoles" message="IUserService_DeleteRoles_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/DeleteRolesResponse" message="IUserService_DeleteRoles_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/DeleteRolesFaultDataFault" name="FaultDataFault" message="IUserService_DeleteRoles_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignRole">
+      <wsdl:input wsaw:Action="urn:IUserService/AssignRole" message="IUserService_AssignRole_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/AssignRoleResponse" message="IUserService_AssignRole_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/AssignRoleFaultDataFault" name="FaultDataFault" message="IUserService_AssignRole_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnassignRole">
+      <wsdl:input wsaw:Action="urn:IUserService/UnassignRole" message="IUserService_UnassignRole_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/UnassignRoleResponse" message="IUserService_UnassignRole_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/UnassignRoleFaultDataFault" name="FaultDataFault" message="IUserService_UnassignRole_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoleByUserName">
+      <wsdl:input wsaw:Action="urn:IUserService/GetRoleByUserName" message="IUserService_GetRoleByUserName_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/GetRoleByUserNameResponse" message="IUserService_GetRoleByUserName_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/GetRoleByUserNameFaultDataFault" name="FaultDataFault" message="IUserService_GetRoleByUserName_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersForUser">
+      <wsdl:input wsaw:Action="urn:IUserService/GetOrdersForUser" message="IUserService_GetOrdersForUser_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IUserService/GetOrdersForUserResponse" message="IUserService_GetOrdersForUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IUserService/GetOrdersForUserFaultDataFault" name="FaultDataFault" message="IUserService_GetOrdersForUser_FaultDataFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

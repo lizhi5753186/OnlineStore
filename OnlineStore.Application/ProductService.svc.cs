@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
-using OnlineStore.ServiceContracts;
-using OnlineStore.Domain.Model;
-using OnlineStore.Domain.Repositories;
 using OnlineStore.Infrastructure;
+using OnlineStore.ServiceContracts;
 using OnlineStore.ServiceContracts.ModelDTOs;
 
 namespace OnlineStore.Application
@@ -70,7 +64,7 @@ namespace OnlineStore.Application
             catch (Exception ex)
             {
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
-            };
+            }
         }
 
         public IEnumerable<CategoryDto> GetCategories()
@@ -97,7 +91,100 @@ namespace OnlineStore.Application
             }
         }
 
+        public List<ProductDto> CreateProducts(List<ProductDto> productsDtos)
+        {
+            try
+            {
+                return _productService.CreateProducts(productsDtos);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
 
-       
+        public List<CategoryDto> CreateCategories(List<CategoryDto> categoriDtos)
+        {
+            try
+            {
+                return _productService.CreateCategories(categoriDtos);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public List<ProductDto> UpdateProducts(List<ProductDto> productsDtos)
+        {
+            try
+            {
+                return _productService.UpdateProducts(productsDtos);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public List<CategoryDto> UpdateCategories(List<CategoryDto> categoriDtos)
+        {
+            try
+            {
+                return _productService.UpdateCategories(categoriDtos);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void DeleteProducts(List<string> produtList)
+        {
+            try
+            {
+                _productService.DeleteProducts(produtList);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void DeleteCategories(List<string> categoryList)
+        {
+            try
+            {
+                _productService.DeleteCategories(categoryList);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public ProductCategorizationDto CategorizeProduct(Guid productId, Guid categoryId)
+        {
+            try
+            {
+                return _productService.CategorizeProduct(productId, categoryId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void UncategorizeProduct(Guid productId)
+        {
+            try
+            {
+                _productService.UncategorizeProduct(productId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
     }
 }

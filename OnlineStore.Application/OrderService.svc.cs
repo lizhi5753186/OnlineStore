@@ -92,5 +92,66 @@ namespace OnlineStore.Application
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
         }
+
+
+        public OrderDto GetOrder(Guid orderId)
+        {
+            try
+            {
+                return _orderServiceImp.GetOrder(orderId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public IList<OrderDto> GetOrdersForUser(Guid userId)
+        {
+            try
+            {
+                return _orderServiceImp.GetOrdersForUser(userId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public IList<OrderDto> GetAllOrders()
+        {
+            try
+            {
+                return _orderServiceImp.GetAllOrders();
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void Confirm(Guid orderId)
+        {
+            try
+            {
+                 _orderServiceImp.Confirm(orderId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public void Dispatch(Guid orderId)
+        {
+            try
+            {
+                _orderServiceImp.Dispatch(orderId);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
    }
 }

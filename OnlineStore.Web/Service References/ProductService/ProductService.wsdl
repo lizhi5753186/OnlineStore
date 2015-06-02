@@ -5,8 +5,81 @@
       <xsd:import schemaLocation="http://localhost:8003/ProductService.svc?xsd=xsd0" />
       <xsd:import schemaLocation="http://localhost:8003/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" />
       <xsd:import schemaLocation="http://localhost:8003/ProductService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8003/ProductService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IProductService_CreateProducts_InputMessage">
+    <wsdl:part name="parameters" element="CreateProducts" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CreateProducts_OutputMessage">
+    <wsdl:part name="parameters" element="CreateProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CreateProducts_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q1:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CreateCategories_InputMessage">
+    <wsdl:part name="parameters" element="CreateCategories" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CreateCategories_OutputMessage">
+    <wsdl:part name="parameters" element="CreateCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CreateCategories_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q2:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UpdateProducts_InputMessage">
+    <wsdl:part name="parameters" element="UpdateProducts" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UpdateProducts_OutputMessage">
+    <wsdl:part name="parameters" element="UpdateProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UpdateProducts_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q3:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UpdateCategories_InputMessage">
+    <wsdl:part name="parameters" element="UpdateCategories" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UpdateCategories_OutputMessage">
+    <wsdl:part name="parameters" element="UpdateCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UpdateCategories_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q4:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_DeleteProducts_InputMessage">
+    <wsdl:part name="parameters" element="DeleteProducts" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_DeleteProducts_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_DeleteProducts_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q5:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_DeleteCategories_InputMessage">
+    <wsdl:part name="parameters" element="DeleteCategories" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_DeleteCategories_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_DeleteCategories_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q6:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CategorizeProduct_InputMessage">
+    <wsdl:part name="parameters" element="CategorizeProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CategorizeProduct_OutputMessage">
+    <wsdl:part name="parameters" element="CategorizeProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CategorizeProduct_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q7:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UncategorizeProduct_InputMessage">
+    <wsdl:part name="parameters" element="UncategorizeProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UncategorizeProduct_OutputMessage">
+    <wsdl:part name="parameters" element="UncategorizeProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UncategorizeProduct_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q8:FaultData" />
+  </wsdl:message>
   <wsdl:message name="IProductService_GetProducts_InputMessage">
     <wsdl:part name="parameters" element="GetProducts" />
   </wsdl:message>
@@ -14,7 +87,7 @@
     <wsdl:part name="parameters" element="GetProductsResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetProducts_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q1:FaultData" />
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q9:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetProductsForCategory_InputMessage">
     <wsdl:part name="parameters" element="GetProductsForCategory" />
@@ -23,7 +96,7 @@
     <wsdl:part name="parameters" element="GetProductsForCategoryResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetProductsForCategory_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q2:FaultData" />
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q10:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetNewProducts_InputMessage">
     <wsdl:part name="parameters" element="GetNewProducts" />
@@ -32,7 +105,7 @@
     <wsdl:part name="parameters" element="GetNewProductsResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetNewProducts_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q3:FaultData" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q11:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetCategoryById_InputMessage">
     <wsdl:part name="parameters" element="GetCategoryById" />
@@ -41,7 +114,7 @@
     <wsdl:part name="parameters" element="GetCategoryByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetCategoryById_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q4:FaultData" />
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q12:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetCategories_InputMessage">
     <wsdl:part name="parameters" element="GetCategories" />
@@ -50,7 +123,7 @@
     <wsdl:part name="parameters" element="GetCategoriesResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetCategories_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q5:FaultData" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q13:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetProductById_InputMessage">
     <wsdl:part name="parameters" element="GetProductById" />
@@ -59,9 +132,49 @@
     <wsdl:part name="parameters" element="GetProductByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetProductById_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q6:FaultData" />
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q14:FaultData" />
   </wsdl:message>
   <wsdl:portType name="IProductService">
+    <wsdl:operation name="CreateProducts">
+      <wsdl:input wsaw:Action="urn:IProductService/CreateProducts" message="IProductService_CreateProducts_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/CreateProductsResponse" message="IProductService_CreateProducts_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/CreateProductsFaultDataFault" name="FaultDataFault" message="IProductService_CreateProducts_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCategories">
+      <wsdl:input wsaw:Action="urn:IProductService/CreateCategories" message="IProductService_CreateCategories_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/CreateCategoriesResponse" message="IProductService_CreateCategories_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/CreateCategoriesFaultDataFault" name="FaultDataFault" message="IProductService_CreateCategories_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProducts">
+      <wsdl:input wsaw:Action="urn:IProductService/UpdateProducts" message="IProductService_UpdateProducts_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/UpdateProductsResponse" message="IProductService_UpdateProducts_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/UpdateProductsFaultDataFault" name="FaultDataFault" message="IProductService_UpdateProducts_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategories">
+      <wsdl:input wsaw:Action="urn:IProductService/UpdateCategories" message="IProductService_UpdateCategories_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/UpdateCategoriesResponse" message="IProductService_UpdateCategories_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/UpdateCategoriesFaultDataFault" name="FaultDataFault" message="IProductService_UpdateCategories_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProducts">
+      <wsdl:input wsaw:Action="urn:IProductService/DeleteProducts" message="IProductService_DeleteProducts_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/DeleteProductsResponse" message="IProductService_DeleteProducts_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/DeleteProductsFaultDataFault" name="FaultDataFault" message="IProductService_DeleteProducts_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategories">
+      <wsdl:input wsaw:Action="urn:IProductService/DeleteCategories" message="IProductService_DeleteCategories_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/DeleteCategoriesResponse" message="IProductService_DeleteCategories_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/DeleteCategoriesFaultDataFault" name="FaultDataFault" message="IProductService_DeleteCategories_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CategorizeProduct">
+      <wsdl:input wsaw:Action="urn:IProductService/CategorizeProduct" message="IProductService_CategorizeProduct_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/CategorizeProductResponse" message="IProductService_CategorizeProduct_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/CategorizeProductFaultDataFault" name="FaultDataFault" message="IProductService_CategorizeProduct_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UncategorizeProduct">
+      <wsdl:input wsaw:Action="urn:IProductService/UncategorizeProduct" message="IProductService_UncategorizeProduct_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/UncategorizeProductResponse" message="IProductService_UncategorizeProduct_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/UncategorizeProductFaultDataFault" name="FaultDataFault" message="IProductService_UncategorizeProduct_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetProducts">
       <wsdl:input wsaw:Action="urn:IProductService/GetProducts" message="IProductService_GetProducts_InputMessage" />
       <wsdl:output wsaw:Action="urn:IProductService/GetProductsResponse" message="IProductService_GetProducts_OutputMessage" />

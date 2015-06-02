@@ -26,7 +26,7 @@
   <xs:complexType name="ShoppingCartItemDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ItemAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ItemAmount" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="Product" nillable="true" type="tns:ProductDto" />
       <xs:element minOccurs="0" name="Quantity" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ShoppingCartId" nillable="true" type="xs:string" />
@@ -35,6 +35,7 @@
   <xs:element name="ShoppingCartItemDto" nillable="true" type="tns:ShoppingCartItemDto" />
   <xs:complexType name="ProductDto">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:CategoryDto" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
@@ -44,6 +45,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProductDto" nillable="true" type="tns:ProductDto" />
+  <xs:complexType name="CategoryDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryDto" nillable="true" type="tns:CategoryDto" />
   <xs:complexType name="OrderDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
@@ -51,7 +60,7 @@
       <xs:element minOccurs="0" name="DispatchedDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OrderItems" nillable="true" type="tns:ArrayOfOrderItemDto" />
-      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:OrderStatus" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:OrderStatusDto" />
       <xs:element minOccurs="0" name="Subtotal" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="UserAddressCity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserAddressCountry" nillable="true" type="xs:string" />
@@ -82,7 +91,7 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrderItemDto" nillable="true" type="tns:OrderItemDto" />
-  <xs:simpleType name="OrderStatus">
+  <xs:simpleType name="OrderStatusDto">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Created" />
       <xs:enumeration value="Paid" />
@@ -91,5 +100,11 @@
       <xs:enumeration value="Delivered" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="OrderStatus" nillable="true" type="tns:OrderStatus" />
+  <xs:element name="OrderStatusDto" nillable="true" type="tns:OrderStatusDto" />
+  <xs:complexType name="ArrayOfOrderDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDto" nillable="true" type="tns:OrderDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderDto" nillable="true" type="tns:ArrayOfOrderDto" />
 </xs:schema>

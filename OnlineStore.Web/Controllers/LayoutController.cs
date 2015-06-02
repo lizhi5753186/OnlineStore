@@ -12,25 +12,8 @@ using ProductDto = OnlineStore.Web.ProductService.ProductDto;
 
 namespace OnlineStore.Web.Controllers
 {
-    public class LayoutController : Controller
+    public class LayoutController : ControllerBase
     {
-        protected Guid UserId
-        {
-            get
-            {
-                if (Session["UserId"] != null)
-                {
-                    return (Guid)Session["UserId"];
-                }
-                else
-                {
-                    var id = new Guid(Membership.GetUser().ProviderUserKey.ToString());
-                    Session["UserId"] = id;
-                    return id;
-                }
-            }
-        }
-
         #region Shared Layout Partial view Actions
 
         public ActionResult _LoginPartial()

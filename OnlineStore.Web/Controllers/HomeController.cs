@@ -10,7 +10,7 @@ using OnlineStore.Web.ProductService;
 
 namespace OnlineStore.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         #region Protected Properties
         protected Guid UserId
@@ -102,6 +102,36 @@ namespace OnlineStore.Web.Controllers
             {
                 var model = proxy.Checkout(this.UserId);
                 return View(model);
+            }
+        }
+
+        [Authorize]
+        public ActionResult Orders()
+        {
+            using (var proxy = new OrderServiceClient())
+            {
+                var model = proxy.GetOrdersForUser(this.UserId);
+                return View(model);
+            }
+        }
+
+        [Authorize]
+        public ActionResult Order(string id)
+        {
+            using (var proxy = new OrderServiceClient())
+            {
+                var model = proxy.GetOrder(new Guid(id));
+                return View(model);
+            }
+        }
+
+        [Authorize]
+        public ActionResult Confirm(string id)
+        {
+            using (var proxy = new OrderServiceClient())
+            {
+                proxy.Confirm(new Guid(id));
+                return RedirectToSuccess("确认收货成功！", "Orders", "Home");
             }
         }
 

@@ -4,7 +4,6 @@ namespace OnlineStore.Domain.Model
 {
     public class ProductCategorization : AggregateRoot
     {
-
         public ProductCategorization()
         { }
 

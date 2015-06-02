@@ -1,7 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8003/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" />
+  <xs:import schemaLocation="http://localhost:8003/ProductService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:8003/ProductService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="CreateProducts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="productsDtos" nillable="true" type="q1:ArrayOfProductDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="CreateProductsResult" nillable="true" type="q2:ArrayOfProductDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCategories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="categoriDtos" nillable="true" type="q3:ArrayOfCategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="CreateCategoriesResult" nillable="true" type="q4:ArrayOfCategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProducts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="productsDtos" nillable="true" type="q5:ArrayOfProductDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="UpdateProductsResult" nillable="true" type="q6:ArrayOfProductDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCategories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="categoriDtos" nillable="true" type="q7:ArrayOfCategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="UpdateCategoriesResult" nillable="true" type="q8:ArrayOfCategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteProducts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="produList" nillable="true" type="q9:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteProductsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCategories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="categoryList" nillable="true" type="q10:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategorizeProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="productId" type="q11:guid" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="categoryId" type="q12:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategorizeProductResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="CategorizeProductResult" nillable="true" type="q13:ProductCategorizationDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UncategorizeProduct">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="productId" type="q14:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UncategorizeProductResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetProducts">
     <xs:complexType>
       <xs:sequence />
@@ -10,21 +118,21 @@
   <xs:element name="GetProductsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetProductsResult" nillable="true" type="q1:ArrayOfProductDto" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetProductsResult" nillable="true" type="q15:ArrayOfProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetProductsForCategory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="categoryId" type="q2:guid" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="categoryId" type="q16:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetProductsForCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetProductsForCategoryResult" nillable="true" type="q3:ArrayOfProductDto" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetProductsForCategoryResult" nillable="true" type="q17:ArrayOfProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,21 +146,21 @@
   <xs:element name="GetNewProductsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetNewProductsResult" nillable="true" type="q4:ArrayOfProductDto" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetNewProductsResult" nillable="true" type="q18:ArrayOfProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCategoryById">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="id" type="q5:guid" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="id" type="q19:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCategoryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetCategoryByIdResult" nillable="true" type="q6:CategoryDto" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetCategoryByIdResult" nillable="true" type="q20:CategoryDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -64,21 +172,21 @@
   <xs:element name="GetCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q7:ArrayOfCategoryDto" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q21:ArrayOfCategoryDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetProductById">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="id" type="q8:guid" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="id" type="q22:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetProductByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetProductByIdResult" nillable="true" type="q9:ProductDto" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetProductByIdResult" nillable="true" type="q23:ProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

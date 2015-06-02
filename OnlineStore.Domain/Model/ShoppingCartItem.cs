@@ -10,9 +10,9 @@ namespace OnlineStore.Domain.Model
     {
         public int Quantity { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
-        public ShoppingCart ShoopingCart { get; set; }
+        public virtual ShoppingCart ShoopingCart { get; set; }
 
         public decimal ItemAmount
         {
@@ -33,7 +33,6 @@ namespace OnlineStore.Domain.Model
                 Product = this.Product, 
                 Quantity = this.Quantity
             };
-            // 为每个SalesLine设置一个不同的ID，以便EF的Context能够识别不同的OrderItem
             return orderItem;
         }
 

@@ -2,6 +2,7 @@
 <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8003/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" />
   <xs:import schemaLocation="http://localhost:8003/UserService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:8003/UserService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="CreateUsers">
     <xs:complexType>
       <xs:sequence>
@@ -62,7 +63,7 @@
   <xs:element name="DeleteUsers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="userDto" nillable="true" type="q5:UserDto" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="userDtos" nillable="true" type="q5:ArrayOfUserDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -124,6 +125,123 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetUserByNameResult" nillable="true" type="q11:UserDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetUsersResult" nillable="true" type="q12:ArrayOfUserDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoles">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetRolesResult" nillable="true" type="q13:ArrayOfRoleDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="roleDataObjects" nillable="true" type="q14:ArrayOfRoleDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="CreateRolesResult" nillable="true" type="q15:ArrayOfRoleDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="roleDataObjects" nillable="true" type="q16:ArrayOfRoleDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="UpdateRolesResult" nillable="true" type="q17:ArrayOfRoleDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="roleList" nillable="true" type="q18:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRolesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssignRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q19:guid" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="roleId" type="q20:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssignRoleResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnassignRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q21:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnassignRoleResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoleByUserName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoleByUserNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetRoleByUserNameResult" nillable="true" type="q22:RoleDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrdersForUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrdersForUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" minOccurs="0" name="GetOrdersForUserResult" nillable="true" type="q23:ArrayOfOrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

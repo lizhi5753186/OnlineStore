@@ -160,8 +160,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\UrlHelperExtension.cs" />
+    <Content Include="App_Code\PermissionKeys.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Membership\OnlineStoreMembershipProvider.cs" />
     <Compile Include="Membership\OnlineStoreMembershipUser.cs" />
+    <Compile Include="Service References\OnlineStoreDto.Partial.cs" />
     <Compile Include="Service References\ProductService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -249,6 +254,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\uploadify.css" />
+    <Content Include="Content\uploadify.swf" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -346,9 +352,15 @@
     <Content Include="Service References\ProductService\OnlineStore.Web.ProductService.ProductDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ProductService\OnlineStore.Web.ProductService.ProductCategorizationDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ProductService\ProductService.disco" />
     <None Include="Service References\ProductService\configuration91.svcinfo" />
     <None Include="Service References\ProductService\configuration.svcinfo" />
+    <None Include="Service References\ProductService\ProductService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -367,6 +379,12 @@
     <None Include="Service References\ProductService\ProductService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\UserService\OnlineStore.Web.UserService.OrderDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\OnlineStore.Web.UserService.RoleDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\UserService\UserService.disco" />
     <None Include="Service References\UserService\configuration91.svcinfo" />
     <None Include="Service References\UserService\configuration.svcinfo" />
@@ -423,6 +441,26 @@
     </None>
     <Content Include="Views\Home\SuccessPage.cshtml" />
     <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
+    <Content Include="Views\Admin\AddCategory.cshtml" />
+    <Content Include="Views\Admin\AddProduct.cshtml" />
+    <Content Include="Views\Admin\AddRole.cshtml" />
+    <Content Include="Views\Admin\Products.cshtml" />
+    <Content Include="Views\Admin\Order.cshtml" />
+    <Content Include="Views\Admin\Orders.cshtml" />
+    <Content Include="Views\Admin\AddUserAccount.cshtml" />
+    <Content Include="Views\Admin\Administration.cshtml" />
+    <Content Include="Views\Admin\Categories.cshtml" />
+    <Content Include="Views\Admin\EditCategory.cshtml" />
+    <Content Include="Views\Admin\EditProduct.cshtml" />
+    <Content Include="Views\Admin\EditRole.cshtml" />
+    <Content Include="Views\Admin\EditUserAccount.cshtml" />
+    <Content Include="Views\Admin\Roles.cshtml" />
+    <Content Include="Views\Admin\UserAccounts.cshtml" />
+    <None Include="Service References\UserService\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

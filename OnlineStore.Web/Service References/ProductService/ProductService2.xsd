@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8003/ProductService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ArrayOfProductDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductDto" nillable="true" type="tns:ProductDto" />
@@ -8,6 +9,7 @@
   <xs:element name="ArrayOfProductDto" nillable="true" type="tns:ArrayOfProductDto" />
   <xs:complexType name="ProductDto">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:CategoryDto" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ImageUrl" nillable="true" type="xs:string" />
@@ -17,14 +19,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProductDto" nillable="true" type="tns:ProductDto" />
-  <xs:complexType name="FaultData">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FullMessage" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="StackTrace" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FaultData" nillable="true" type="tns:FaultData" />
   <xs:complexType name="CategoryDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
@@ -33,10 +27,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CategoryDto" nillable="true" type="tns:CategoryDto" />
+  <xs:complexType name="FaultData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StackTrace" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FaultData" nillable="true" type="tns:FaultData" />
   <xs:complexType name="ArrayOfCategoryDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="CategoryDto" nillable="true" type="tns:CategoryDto" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCategoryDto" nillable="true" type="tns:ArrayOfCategoryDto" />
+  <xs:complexType name="ProductCategorizationDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductCategorizationDto" nillable="true" type="tns:ProductCategorizationDto" />
 </xs:schema>

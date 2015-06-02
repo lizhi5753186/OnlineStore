@@ -38,10 +38,10 @@ namespace OnlineStore.Web.UserService {
         private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> IsDisableField;
+        private System.Nullable<bool> IsDisabledField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> LastLoginDateField;
+        private System.Nullable<System.DateTime> LastLogonDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PasswordField;
@@ -50,7 +50,7 @@ namespace OnlineStore.Web.UserService {
         private string PhoneNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> RegisterDateField;
+        private System.Nullable<System.DateTime> RegisteredDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
@@ -131,27 +131,27 @@ namespace OnlineStore.Web.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> IsDisable {
+        public System.Nullable<bool> IsDisabled {
             get {
-                return this.IsDisableField;
+                return this.IsDisabledField;
             }
             set {
-                if ((this.IsDisableField.Equals(value) != true)) {
-                    this.IsDisableField = value;
-                    this.RaisePropertyChanged("IsDisable");
+                if ((this.IsDisabledField.Equals(value) != true)) {
+                    this.IsDisabledField = value;
+                    this.RaisePropertyChanged("IsDisabled");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> LastLoginDate {
+        public System.Nullable<System.DateTime> LastLogonDate {
             get {
-                return this.LastLoginDateField;
+                return this.LastLogonDateField;
             }
             set {
-                if ((this.LastLoginDateField.Equals(value) != true)) {
-                    this.LastLoginDateField = value;
-                    this.RaisePropertyChanged("LastLoginDate");
+                if ((this.LastLogonDateField.Equals(value) != true)) {
+                    this.LastLogonDateField = value;
+                    this.RaisePropertyChanged("LastLogonDate");
                 }
             }
         }
@@ -183,14 +183,14 @@ namespace OnlineStore.Web.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> RegisterDate {
+        public System.Nullable<System.DateTime> RegisteredDate {
             get {
-                return this.RegisterDateField;
+                return this.RegisteredDateField;
             }
             set {
-                if ((this.RegisterDateField.Equals(value) != true)) {
-                    this.RegisterDateField = value;
-                    this.RaisePropertyChanged("RegisterDate");
+                if ((this.RegisteredDateField.Equals(value) != true)) {
+                    this.RegisteredDateField = value;
+                    this.RaisePropertyChanged("RegisteredDate");
                 }
             }
         }
@@ -404,6 +404,731 @@ namespace OnlineStore.Web.UserService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RoleDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class RoleDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class OrderDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> CreateDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> DeliveredDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> DispatchedDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OnlineStore.Web.UserService.OrderItemDto[] OrderItemsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<OnlineStore.Web.UserService.OrderStatusDto> StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> SubtotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserAddressCityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserAddressCountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserAddressStateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserAddressStreetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserAddressZipField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserContactField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserEmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserPhoneField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> CreateDate {
+            get {
+                return this.CreateDateField;
+            }
+            set {
+                if ((this.CreateDateField.Equals(value) != true)) {
+                    this.CreateDateField = value;
+                    this.RaisePropertyChanged("CreateDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> DeliveredDate {
+            get {
+                return this.DeliveredDateField;
+            }
+            set {
+                if ((this.DeliveredDateField.Equals(value) != true)) {
+                    this.DeliveredDateField = value;
+                    this.RaisePropertyChanged("DeliveredDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> DispatchedDate {
+            get {
+                return this.DispatchedDateField;
+            }
+            set {
+                if ((this.DispatchedDateField.Equals(value) != true)) {
+                    this.DispatchedDateField = value;
+                    this.RaisePropertyChanged("DispatchedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OnlineStore.Web.UserService.OrderItemDto[] OrderItems {
+            get {
+                return this.OrderItemsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderItemsField, value) != true)) {
+                    this.OrderItemsField = value;
+                    this.RaisePropertyChanged("OrderItems");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<OnlineStore.Web.UserService.OrderStatusDto> Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Subtotal {
+            get {
+                return this.SubtotalField;
+            }
+            set {
+                if ((this.SubtotalField.Equals(value) != true)) {
+                    this.SubtotalField = value;
+                    this.RaisePropertyChanged("Subtotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserAddressCity {
+            get {
+                return this.UserAddressCityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAddressCityField, value) != true)) {
+                    this.UserAddressCityField = value;
+                    this.RaisePropertyChanged("UserAddressCity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserAddressCountry {
+            get {
+                return this.UserAddressCountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAddressCountryField, value) != true)) {
+                    this.UserAddressCountryField = value;
+                    this.RaisePropertyChanged("UserAddressCountry");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserAddressState {
+            get {
+                return this.UserAddressStateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAddressStateField, value) != true)) {
+                    this.UserAddressStateField = value;
+                    this.RaisePropertyChanged("UserAddressState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserAddressStreet {
+            get {
+                return this.UserAddressStreetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAddressStreetField, value) != true)) {
+                    this.UserAddressStreetField = value;
+                    this.RaisePropertyChanged("UserAddressStreet");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserAddressZip {
+            get {
+                return this.UserAddressZipField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAddressZipField, value) != true)) {
+                    this.UserAddressZipField = value;
+                    this.RaisePropertyChanged("UserAddressZip");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserContact {
+            get {
+                return this.UserContactField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserContactField, value) != true)) {
+                    this.UserContactField = value;
+                    this.RaisePropertyChanged("UserContact");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserEmail {
+            get {
+                return this.UserEmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserEmailField, value) != true)) {
+                    this.UserEmailField = value;
+                    this.RaisePropertyChanged("UserEmail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserPhone {
+            get {
+                return this.UserPhoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserPhoneField, value) != true)) {
+                    this.UserPhoneField = value;
+                    this.RaisePropertyChanged("UserPhone");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderItemDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class OrderItemDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> ItemAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OnlineStore.Web.UserService.ProductDto ProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> QuantityField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> ItemAmount {
+            get {
+                return this.ItemAmountField;
+            }
+            set {
+                if ((this.ItemAmountField.Equals(value) != true)) {
+                    this.ItemAmountField = value;
+                    this.RaisePropertyChanged("ItemAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrderId {
+            get {
+                return this.OrderIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderIdField, value) != true)) {
+                    this.OrderIdField = value;
+                    this.RaisePropertyChanged("OrderId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OnlineStore.Web.UserService.ProductDto Product {
+            get {
+                return this.ProductField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductField, value) != true)) {
+                    this.ProductField = value;
+                    this.RaisePropertyChanged("Product");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatusDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    public enum OrderStatusDto : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Created = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Paid = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Picked = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Dispatched = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Delivered = 4,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class ProductDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OnlineStore.Web.UserService.CategoryDto CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageUrlField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsNewField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> UnitPriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OnlineStore.Web.UserService.CategoryDto Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageUrl {
+            get {
+                return this.ImageUrlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageUrlField, value) != true)) {
+                    this.ImageUrlField = value;
+                    this.RaisePropertyChanged("ImageUrl");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsNew {
+            get {
+                return this.IsNewField;
+            }
+            set {
+                if ((this.IsNewField.Equals(value) != true)) {
+                    this.IsNewField = value;
+                    this.RaisePropertyChanged("IsNew");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> UnitPrice {
+            get {
+                return this.UnitPriceField;
+            }
+            set {
+                if ((this.UnitPriceField.Equals(value) != true)) {
+                    this.UnitPriceField = value;
+                    this.RaisePropertyChanged("UnitPrice");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class CategoryDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="", ConfigurationName="UserService.IUserService")]
     public interface IUserService {
@@ -438,10 +1163,10 @@ namespace OnlineStore.Web.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/DeleteUsers", ReplyAction="urn:IUserService/DeleteUsersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/DeleteUsersFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
-        void DeleteUsers(OnlineStore.Web.UserService.UserDto userDto);
+        void DeleteUsers(OnlineStore.Web.UserService.UserDto[] userDtos);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/DeleteUsers", ReplyAction="urn:IUserService/DeleteUsersResponse")]
-        System.Threading.Tasks.Task DeleteUsersAsync(OnlineStore.Web.UserService.UserDto userDto);
+        System.Threading.Tasks.Task DeleteUsersAsync(OnlineStore.Web.UserService.UserDto[] userDtos);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/UpdateUsers", ReplyAction="urn:IUserService/UpdateUsersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/UpdateUsersFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
@@ -470,6 +1195,69 @@ namespace OnlineStore.Web.UserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetUserByName", ReplyAction="urn:IUserService/GetUserByNameResponse")]
         System.Threading.Tasks.Task<OnlineStore.Web.UserService.UserDto> GetUserByNameAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetUsers", ReplyAction="urn:IUserService/GetUsersResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/GetUsersFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.UserService.UserDto[] GetUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetUsers", ReplyAction="urn:IUserService/GetUsersResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.UserService.UserDto[]> GetUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetRoles", ReplyAction="urn:IUserService/GetRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/GetRolesFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.UserService.RoleDto[] GetRoles();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetRoles", ReplyAction="urn:IUserService/GetRolesResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.UserService.RoleDto[]> GetRolesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/CreateRoles", ReplyAction="urn:IUserService/CreateRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/CreateRolesFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.UserService.RoleDto[] CreateRoles(OnlineStore.Web.UserService.RoleDto[] roleDataObjects);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/CreateRoles", ReplyAction="urn:IUserService/CreateRolesResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.UserService.RoleDto[]> CreateRolesAsync(OnlineStore.Web.UserService.RoleDto[] roleDataObjects);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/UpdateRoles", ReplyAction="urn:IUserService/UpdateRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/UpdateRolesFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.UserService.RoleDto[] UpdateRoles(OnlineStore.Web.UserService.RoleDto[] roleDataObjects);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/UpdateRoles", ReplyAction="urn:IUserService/UpdateRolesResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.UserService.RoleDto[]> UpdateRolesAsync(OnlineStore.Web.UserService.RoleDto[] roleDataObjects);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/DeleteRoles", ReplyAction="urn:IUserService/DeleteRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/DeleteRolesFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        void DeleteRoles(string[] roleList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/DeleteRoles", ReplyAction="urn:IUserService/DeleteRolesResponse")]
+        System.Threading.Tasks.Task DeleteRolesAsync(string[] roleList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/AssignRole", ReplyAction="urn:IUserService/AssignRoleResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/AssignRoleFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        void AssignRole(System.Guid userId, System.Guid roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/AssignRole", ReplyAction="urn:IUserService/AssignRoleResponse")]
+        System.Threading.Tasks.Task AssignRoleAsync(System.Guid userId, System.Guid roleId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/UnassignRole", ReplyAction="urn:IUserService/UnassignRoleResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/UnassignRoleFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        void UnassignRole(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/UnassignRole", ReplyAction="urn:IUserService/UnassignRoleResponse")]
+        System.Threading.Tasks.Task UnassignRoleAsync(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetRoleByUserName", ReplyAction="urn:IUserService/GetRoleByUserNameResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/GetRoleByUserNameFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.UserService.RoleDto GetRoleByUserName(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetRoleByUserName", ReplyAction="urn:IUserService/GetRoleByUserNameResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.UserService.RoleDto> GetRoleByUserNameAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetOrdersForUser", ReplyAction="urn:IUserService/GetOrdersForUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.UserService.FaultData), Action="urn:IUserService/GetOrdersForUserFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.UserService.OrderDto[] GetOrdersForUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IUserService/GetOrdersForUser", ReplyAction="urn:IUserService/GetOrdersForUserResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.UserService.OrderDto[]> GetOrdersForUserAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -531,12 +1319,12 @@ namespace OnlineStore.Web.UserService {
             return base.Channel.EnableUserAsync(userDto);
         }
         
-        public void DeleteUsers(OnlineStore.Web.UserService.UserDto userDto) {
-            base.Channel.DeleteUsers(userDto);
+        public void DeleteUsers(OnlineStore.Web.UserService.UserDto[] userDtos) {
+            base.Channel.DeleteUsers(userDtos);
         }
         
-        public System.Threading.Tasks.Task DeleteUsersAsync(OnlineStore.Web.UserService.UserDto userDto) {
-            return base.Channel.DeleteUsersAsync(userDto);
+        public System.Threading.Tasks.Task DeleteUsersAsync(OnlineStore.Web.UserService.UserDto[] userDtos) {
+            return base.Channel.DeleteUsersAsync(userDtos);
         }
         
         public OnlineStore.Web.UserService.UserDto[] UpdateUsers(OnlineStore.Web.UserService.UserDto[] userDataObjects) {
@@ -569,6 +1357,78 @@ namespace OnlineStore.Web.UserService {
         
         public System.Threading.Tasks.Task<OnlineStore.Web.UserService.UserDto> GetUserByNameAsync(string userName) {
             return base.Channel.GetUserByNameAsync(userName);
+        }
+        
+        public OnlineStore.Web.UserService.UserDto[] GetUsers() {
+            return base.Channel.GetUsers();
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.UserService.UserDto[]> GetUsersAsync() {
+            return base.Channel.GetUsersAsync();
+        }
+        
+        public OnlineStore.Web.UserService.RoleDto[] GetRoles() {
+            return base.Channel.GetRoles();
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.UserService.RoleDto[]> GetRolesAsync() {
+            return base.Channel.GetRolesAsync();
+        }
+        
+        public OnlineStore.Web.UserService.RoleDto[] CreateRoles(OnlineStore.Web.UserService.RoleDto[] roleDataObjects) {
+            return base.Channel.CreateRoles(roleDataObjects);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.UserService.RoleDto[]> CreateRolesAsync(OnlineStore.Web.UserService.RoleDto[] roleDataObjects) {
+            return base.Channel.CreateRolesAsync(roleDataObjects);
+        }
+        
+        public OnlineStore.Web.UserService.RoleDto[] UpdateRoles(OnlineStore.Web.UserService.RoleDto[] roleDataObjects) {
+            return base.Channel.UpdateRoles(roleDataObjects);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.UserService.RoleDto[]> UpdateRolesAsync(OnlineStore.Web.UserService.RoleDto[] roleDataObjects) {
+            return base.Channel.UpdateRolesAsync(roleDataObjects);
+        }
+        
+        public void DeleteRoles(string[] roleList) {
+            base.Channel.DeleteRoles(roleList);
+        }
+        
+        public System.Threading.Tasks.Task DeleteRolesAsync(string[] roleList) {
+            return base.Channel.DeleteRolesAsync(roleList);
+        }
+        
+        public void AssignRole(System.Guid userId, System.Guid roleId) {
+            base.Channel.AssignRole(userId, roleId);
+        }
+        
+        public System.Threading.Tasks.Task AssignRoleAsync(System.Guid userId, System.Guid roleId) {
+            return base.Channel.AssignRoleAsync(userId, roleId);
+        }
+        
+        public void UnassignRole(System.Guid userId) {
+            base.Channel.UnassignRole(userId);
+        }
+        
+        public System.Threading.Tasks.Task UnassignRoleAsync(System.Guid userId) {
+            return base.Channel.UnassignRoleAsync(userId);
+        }
+        
+        public OnlineStore.Web.UserService.RoleDto GetRoleByUserName(string userName) {
+            return base.Channel.GetRoleByUserName(userName);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.UserService.RoleDto> GetRoleByUserNameAsync(string userName) {
+            return base.Channel.GetRoleByUserNameAsync(userName);
+        }
+        
+        public OnlineStore.Web.UserService.OrderDto[] GetOrdersForUser(string userName) {
+            return base.Channel.GetOrdersForUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.UserService.OrderDto[]> GetOrdersForUserAsync(string userName) {
+            return base.Channel.GetOrdersForUserAsync(userName);
         }
     }
 }

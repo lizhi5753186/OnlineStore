@@ -22,6 +22,39 @@ namespace OnlineStore.Repositories.EntityFramework
                 this._efContext = efContext;
         }
 
+        private MemberExpression GetMemberInfo(LambdaExpression lambda)
+        {
+            if (lambda == null)
+                throw new ArgumentNullException("lambda");
+
+            MemberExpression memberExpr = null;
+
+            switch (lambda.Body.NodeType)
+            {
+                case ExpressionType.Convert:
+                    memberExpr =
+                        ((UnaryExpression)lambda.Body).Operand as MemberExpression;
+                    break;
+                case ExpressionType.MemberAccess:
+                    memberExpr = lambda.Body as MemberExpression;
+                    break;
+            }
+
+            if (memberExpr == null)
+                throw new ArgumentException("method");
+
+            return memberExpr;
+        }
+
+        private string GetEagerLoadingPath(Expression<Func<TAggregateRoot, dynamic>> eagerLoadingProperty)
+        {
+            var memberExpression = this.GetMemberInfo(eagerLoadingProperty);
+            var parameterName = eagerLoadingProperty.Parameters.First().Name;
+            var memberExpressionStr = memberExpression.ToString();
+            var path = memberExpressionStr.Replace(parameterName + ".", "");
+            return path;
+        }
+
         protected IEntityFrameworkRepositoryContext EfContext 
         {
             get { return this._efContext; }
@@ -100,5 +133,79 @@ namespace OnlineStore.Repositories.EntityFramework
         {
            _efContext.RegisterModified(aggregateRoot);
         }
+
+        #region 饥饿加载方式实现
+        public TAggregateRoot GetBySpecification(ISpecification<TAggregateRoot> specification, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties)
+        {
+            var dbset = _efContext.DbContex.Set<TAggregateRoot>();
+            if (eagerLoadingProperties != null &&
+                eagerLoadingProperties.Length > 0)
+            {
+                var eagerLoadingProperty = eagerLoadingProperties[0];
+                var eagerLoadingPath = this.GetEagerLoadingPath(eagerLoadingProperty);
+                var dbquery = dbset.Include(eagerLoadingPath);
+                for (var i = 1; i < eagerLoadingProperties.Length; i++)
+                {
+                    eagerLoadingProperty = eagerLoadingProperties[i];
+                    eagerLoadingPath = this.GetEagerLoadingPath(eagerLoadingProperty);
+                    dbquery = dbquery.Include(eagerLoadingPath);
+                }
+                return dbquery.Where(specification.Expression).FirstOrDefault();
+            }
+            else
+                return dbset.Where(specification.Expression).FirstOrDefault();
+        }
+
+        public IEnumerable<TAggregateRoot> GetAll(params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties)
+        {
+            return GetAll(new AnySpecification<TAggregateRoot>(), null, SortOrder.UnSpecified, eagerLoadingProperties);
+        }
+
+        public IEnumerable<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties)
+        {
+            return GetAll(new AnySpecification<TAggregateRoot>(), sortPredicate, sortOrder, eagerLoadingProperties);
+        }
+
+        public IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties)
+        {
+            return GetAll(specification, null, SortOrder.UnSpecified, eagerLoadingProperties);
+        }
+
+        public IEnumerable<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties)
+        {
+            var dbset = _efContext.DbContex.Set<TAggregateRoot>();
+            IQueryable<TAggregateRoot> queryable = null;
+            if (eagerLoadingProperties != null &&
+                eagerLoadingProperties.Length > 0)
+            {
+                var eagerLoadingProperty = eagerLoadingProperties[0];
+                var eagerLoadingPath = this.GetEagerLoadingPath(eagerLoadingProperty);
+                var dbquery = dbset.Include(eagerLoadingPath);
+                for (var i = 1; i < eagerLoadingProperties.Length; i++)
+                {
+                    eagerLoadingProperty = eagerLoadingProperties[i];
+                    eagerLoadingPath = this.GetEagerLoadingPath(eagerLoadingProperty);
+                    dbquery = dbquery.Include(eagerLoadingPath);
+                }
+                queryable = dbquery.Where(specification.Expression);
+            }
+            else
+                queryable = dbset.Where(specification.Expression);
+
+            if (sortPredicate != null)
+            {
+                switch (sortOrder)
+                {
+                    case SortOrder.Ascending:
+                        return queryable.SortBy(sortPredicate).ToList();
+                    case SortOrder.Descending:
+                        return queryable.SortByDescending(sortPredicate).ToList();
+                    default:
+                        break;
+                }
+            }
+            return queryable.ToList();
+        }
+        #endregion 
     }
 }

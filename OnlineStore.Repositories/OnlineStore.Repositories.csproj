@@ -65,12 +65,15 @@
     <Compile Include="EntityFramework\ModelConfigurations\UserTypeConfiguration.cs" />
     <Compile Include="EntityFramework\OnlineStoreDbContext.cs" />
     <Compile Include="EntityFramework\OnlineStoreDbContextInitailizer.cs" />
+    <Compile Include="EntityFramework\OrderRepository.cs" />
     <Compile Include="EntityFramework\ProductCategorizationRepository.cs" />
+    <Compile Include="EntityFramework\RoleRepository.cs" />
     <Compile Include="EntityFramework\ShoppingCartItemRepository.cs" />
     <Compile Include="EntityFramework\ShoppingCartRepository.cs" />
     <Compile Include="EntityFramework\SortByExtension.cs" />
     <Compile Include="EntityFramework\ProductRepository.cs" />
     <Compile Include="EntityFramework\UserRepository.cs" />
+    <Compile Include="EntityFramework\UserRoleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

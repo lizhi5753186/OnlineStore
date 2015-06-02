@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using OnlineStore.ServiceContracts.ModelDTOs;
 
@@ -34,5 +35,27 @@ namespace OnlineStore.ServiceContracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         OrderDto Checkout(Guid customerId);
+
+        [OperationContract]
+        [FaultContract(typeof (FaultData))]
+        OrderDto GetOrder(Guid orderId);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        IList<OrderDto> GetOrdersForUser(Guid userId);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        IList<OrderDto> GetAllOrders();
+
+        // 销售订单确认。
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        void Confirm(Guid orderId);
+
+        // 确认发货
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        void Dispatch(Guid orderId);
     }
 }

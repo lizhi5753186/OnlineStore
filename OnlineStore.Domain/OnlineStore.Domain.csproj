@@ -39,7 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\DomainEvent.cs" />
     <Compile Include="DomainException.cs" />
+    <Compile Include="Events\EventHandlers\OrderConfirmedEventHandler.cs" />
+    <Compile Include="Events\EventHandlers\OrderDispatchedEventHandler.cs" />
+    <Compile Include="Events\IDomainEvent.cs" />
+    <Compile Include="Events\IDomainEventHandler.cs" />
+    <Compile Include="Events\OrderConfirmedEvent.cs" />
+    <Compile Include="Events\OrderDispatchedEvent.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Model\Address.cs" />
@@ -57,13 +64,18 @@
     <Compile Include="Model\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
+    <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IProductCategorizationRepository.cs" />
     <Compile Include="Repositories\IProductRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryContext.cs" />
+    <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IShoppingCartItemRepository.cs" />
     <Compile Include="Repositories\IShoppingCartRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\IUserRoleRepository.cs" />
+    <Compile Include="Services\DomainService.cs" />
+    <Compile Include="Services\IDomainService.cs" />
     <Compile Include="Specifications\AnySpecification.cs" />
     <Compile Include="Specifications\ExpressionSpecification.cs" />
     <Compile Include="Specifications\ISpecification.cs" />
@@ -73,14 +85,16 @@
     <Compile Include="Specifications\Specification.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OnlineStore.Events\OnlineStore.Events.csproj">
+      <Project>{f165abc2-f76a-4fd7-8675-833264855221}</Project>
+      <Name>OnlineStore.Events</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineStore.Infrastructure\OnlineStore.Infrastructure.csproj">
       <Project>{9dde33cc-cf3c-436e-8a5f-4e1f0f8b603e}</Project>
       <Name>OnlineStore.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

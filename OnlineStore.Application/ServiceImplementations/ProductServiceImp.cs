@@ -4,6 +4,8 @@ using System.Linq;
 using AutoMapper;
 using OnlineStore.Domain.Model;
 using OnlineStore.Domain.Repositories;
+using OnlineStore.Domain.Services;
+using OnlineStore.Domain.Specifications;
 using OnlineStore.ServiceContracts;
 using OnlineStore.ServiceContracts.ModelDTOs;
 
@@ -16,17 +18,20 @@ namespace OnlineStore.Application.ServiceImplementations
         private readonly IProductRepository _productRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IProductCategorizationRepository _productCategorizationRepository;
+        private readonly IDomainService _domainService;
         #endregion 
 
         #region Ctor
         public ProductServiceImp(IRepositoryContext context,
             IProductRepository productRepository, 
             ICategoryRepository categoryRepository, 
-            IProductCategorizationRepository productCategorizationRepository) :base(context)
+            IProductCategorizationRepository productCategorizationRepository,
+            IDomainService domainService) :base(context)
         {
             _categoryRepository = categoryRepository;
             _productRepository = productRepository;
             _productCategorizationRepository = productCategorizationRepository;
+            _domainService = domainService;
         }
 
         #endregion
@@ -98,6 +103,92 @@ namespace OnlineStore.Application.ServiceImplementations
             return result;
         }
 
+        public List<ProductDto> CreateProducts(List<ProductDto> productsDtos)
+        {
+            return PerformCreateObjects<List<ProductDto>, ProductDto, Product>(productsDtos, _productRepository);
+        }
+
+        public List<CategoryDto> CreateCategories(List<CategoryDto> categoriDtos)
+        {
+            return PerformCreateObjects<List<CategoryDto>, CategoryDto, Category>(categoriDtos, _categoryRepository);
+        }
+
+        public List<ProductDto> UpdateProducts(List<ProductDto> productsDtos)
+        {
+            return PerformUpdateObjects<List<ProductDto>, ProductDto, Product>(productsDtos,
+                _productRepository,
+                pdto => pdto.Id,
+                (p, pdto) =>
+                {
+                    if (!string.IsNullOrEmpty(pdto.Description))
+                        p.Description = pdto.Description;
+                    if (!string.IsNullOrEmpty(pdto.ImageUrl))
+                        p.ImageUrl = pdto.ImageUrl;
+                    if (!string.IsNullOrEmpty(pdto.Name))
+                        p.Name = pdto.Name;
+                    if (pdto.IsNew != null)
+                        p.IsNew = pdto.IsNew.Value;
+                    if (pdto.UnitPrice != null)
+                        p.UnitPrice = pdto.UnitPrice.Value;
+                });
+        }
+
+        public List<CategoryDto> UpdateCategories(List<CategoryDto> categoriDtos)
+        {
+            return PerformUpdateObjects<List<CategoryDto>, CategoryDto, Category>(categoriDtos,
+                _categoryRepository,
+                cdto => cdto.Id,
+                (c, cdto) =>
+                {
+                    if (!string.IsNullOrEmpty(cdto.Name))
+                        c.Name = cdto.Name;
+                    if (!string.IsNullOrEmpty(cdto.Description))
+                        c.Description = cdto.Description;
+                });
+        }
+
+        public void DeleteProducts(List<string> produList)
+        {
+            PerformDeleteObjects<Product>(produList,
+                _productRepository,
+                id =>
+                {
+                    var categorization = _productCategorizationRepository.GetBySpecification(Specification<ProductCategorization>.Eval(c => c.ProductId == id));
+                    if (categorization != null)
+                        _productCategorizationRepository.Remove(categorization);
+                });
+        }
+
+        public void DeleteCategories(List<string> categoryList)
+        {
+            PerformDeleteObjects<Category>(categoryList,
+                _categoryRepository,
+                id =>
+                {
+                    var categorization = _productCategorizationRepository.GetBySpecification(Specification<ProductCategorization>.Eval(c => c.CategoryId == id));
+                    if (categorization != null)
+                        _productCategorizationRepository.Remove(categorization);
+                });
+        }
+
+        public ProductCategorizationDto CategorizeProduct(Guid productId, Guid categoryId)
+        {
+            if (productId == Guid.Empty)
+                throw new ArgumentNullException("productId");
+            if (categoryId == Guid.Empty)
+                throw new ArgumentNullException("categoryId");
+            var product = _productRepository.GetByKey(productId);
+            var category = _categoryRepository.GetByKey(categoryId);
+            return Mapper.Map<ProductCategorization, ProductCategorizationDto>(_domainService.Categorize(product, category));
+        }
+
+        public void UncategorizeProduct(Guid productId)
+        {
+            if (productId == Guid.Empty)
+                throw new ArgumentNullException("productId");
+            var product = _productRepository.GetByKey(productId);
+            _domainService.Uncategorize(product);
+        }
         #endregion  
     }
 }

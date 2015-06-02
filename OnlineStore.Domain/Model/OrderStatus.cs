@@ -7,6 +7,6 @@ namespace OnlineStore.Domain.Model
         Paid, // 订单已付款
         Picked, // 订单已仓库拣货
         Dispatched, // 已发货
-        Delevered // 已派送
+        Delivered // 已派送
     }
 }

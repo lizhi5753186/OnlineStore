@@ -61,6 +61,51 @@
   <wsdl:message name="IOrderService_Checkout_FaultDataFault_FaultMessage">
     <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q6:FaultData" />
   </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrder" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrder_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q7:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrdersForUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersForUser" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrdersForUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrdersForUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetOrdersForUser_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q8:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetAllOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOrders" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetAllOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_GetAllOrders_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q9:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Confirm_InputMessage">
+    <wsdl:part name="parameters" element="tns:Confirm" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Confirm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Confirm_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q10:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Dispatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:Dispatch" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Dispatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DispatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderService_Dispatch_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q11:FaultData" />
+  </wsdl:message>
   <wsdl:portType name="IOrderService">
     <wsdl:operation name="GetShoppingCartItemCount">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetShoppingCartItemCount" message="tns:IOrderService_GetShoppingCartItemCount_InputMessage" />
@@ -91,6 +136,31 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/Checkout" message="tns:IOrderService_Checkout_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/CheckoutResponse" message="tns:IOrderService_Checkout_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/CheckoutFaultDataFault" name="FaultDataFault" message="tns:IOrderService_Checkout_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrder" message="tns:IOrderService_GetOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrderResponse" message="tns:IOrderService_GetOrder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/GetOrderFaultDataFault" name="FaultDataFault" message="tns:IOrderService_GetOrder_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersForUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetOrdersForUser" message="tns:IOrderService_GetOrdersForUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetOrdersForUserResponse" message="tns:IOrderService_GetOrdersForUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/GetOrdersForUserFaultDataFault" name="FaultDataFault" message="tns:IOrderService_GetOrdersForUser_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/GetAllOrders" message="tns:IOrderService_GetAllOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/GetAllOrdersResponse" message="tns:IOrderService_GetAllOrders_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/GetAllOrdersFaultDataFault" name="FaultDataFault" message="tns:IOrderService_GetAllOrders_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Confirm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/Confirm" message="tns:IOrderService_Confirm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/ConfirmResponse" message="tns:IOrderService_Confirm_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/ConfirmFaultDataFault" name="FaultDataFault" message="tns:IOrderService_Confirm_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Dispatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderService/Dispatch" message="tns:IOrderService_Dispatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderService/DispatchResponse" message="tns:IOrderService_Dispatch_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IOrderService/DispatchFaultDataFault" name="FaultDataFault" message="tns:IOrderService_Dispatch_FaultDataFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderService" type="tns:IOrderService">
@@ -157,6 +227,66 @@
     </wsdl:operation>
     <wsdl:operation name="Checkout">
       <soap:operation soapAction="http://tempuri.org/IOrderService/Checkout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrder">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrdersForUser">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetOrdersForUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOrders">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/GetAllOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Confirm">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/Confirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Dispatch">
+      <soap:operation soapAction="http://tempuri.org/IOrderService/Dispatch" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -196,7 +196,7 @@ namespace OnlineStore.Web.OrderService {
         private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal ItemAmountField;
+        private System.Nullable<decimal> ItemAmountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private OnlineStore.Web.OrderService.ProductDto ProductField;
@@ -231,7 +231,7 @@ namespace OnlineStore.Web.OrderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal ItemAmount {
+        public System.Nullable<decimal> ItemAmount {
             get {
                 return this.ItemAmountField;
             }
@@ -302,6 +302,9 @@ namespace OnlineStore.Web.OrderService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OnlineStore.Web.OrderService.CategoryDto CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -326,6 +329,19 @@ namespace OnlineStore.Web.OrderService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OnlineStore.Web.OrderService.CategoryDto Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
             }
         }
         
@@ -419,6 +435,83 @@ namespace OnlineStore.Web.OrderService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class CategoryDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OrderDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
     [System.SerializableAttribute()]
     public partial class OrderDto : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -442,7 +535,7 @@ namespace OnlineStore.Web.OrderService {
         private OnlineStore.Web.OrderService.OrderItemDto[] OrderItemsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<OnlineStore.Web.OrderService.OrderStatus> StatusField;
+        private System.Nullable<OnlineStore.Web.OrderService.OrderStatusDto> StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> SubtotalField;
@@ -553,7 +646,7 @@ namespace OnlineStore.Web.OrderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<OnlineStore.Web.OrderService.OrderStatus> Status {
+        public System.Nullable<OnlineStore.Web.OrderService.OrderStatusDto> Status {
             get {
                 return this.StatusField;
             }
@@ -828,8 +921,8 @@ namespace OnlineStore.Web.OrderService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatus", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
-    public enum OrderStatus : int {
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderStatusDto", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    public enum OrderStatusDto : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Created = 0,
@@ -892,6 +985,41 @@ namespace OnlineStore.Web.OrderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/Checkout", ReplyAction="http://tempuri.org/IOrderService/CheckoutResponse")]
         System.Threading.Tasks.Task<OnlineStore.Web.OrderService.OrderDto> CheckoutAsync(System.Guid customerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrder", ReplyAction="http://tempuri.org/IOrderService/GetOrderResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.OrderService.FaultData), Action="http://tempuri.org/IOrderService/GetOrderFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.OrderService.OrderDto GetOrder(System.Guid orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrder", ReplyAction="http://tempuri.org/IOrderService/GetOrderResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.OrderService.OrderDto> GetOrderAsync(System.Guid orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrdersForUser", ReplyAction="http://tempuri.org/IOrderService/GetOrdersForUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.OrderService.FaultData), Action="http://tempuri.org/IOrderService/GetOrdersForUserFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.OrderService.OrderDto[] GetOrdersForUser(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetOrdersForUser", ReplyAction="http://tempuri.org/IOrderService/GetOrdersForUserResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.OrderService.OrderDto[]> GetOrdersForUserAsync(System.Guid userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetAllOrders", ReplyAction="http://tempuri.org/IOrderService/GetAllOrdersResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.OrderService.FaultData), Action="http://tempuri.org/IOrderService/GetAllOrdersFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.OrderService.OrderDto[] GetAllOrders();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetAllOrders", ReplyAction="http://tempuri.org/IOrderService/GetAllOrdersResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.OrderService.OrderDto[]> GetAllOrdersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/Confirm", ReplyAction="http://tempuri.org/IOrderService/ConfirmResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.OrderService.FaultData), Action="http://tempuri.org/IOrderService/ConfirmFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        void Confirm(System.Guid orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/Confirm", ReplyAction="http://tempuri.org/IOrderService/ConfirmResponse")]
+        System.Threading.Tasks.Task ConfirmAsync(System.Guid orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/Dispatch", ReplyAction="http://tempuri.org/IOrderService/DispatchResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.OrderService.FaultData), Action="http://tempuri.org/IOrderService/DispatchFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        void Dispatch(System.Guid orderId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/Dispatch", ReplyAction="http://tempuri.org/IOrderService/DispatchResponse")]
+        System.Threading.Tasks.Task DispatchAsync(System.Guid orderId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -967,6 +1095,46 @@ namespace OnlineStore.Web.OrderService {
         
         public System.Threading.Tasks.Task<OnlineStore.Web.OrderService.OrderDto> CheckoutAsync(System.Guid customerId) {
             return base.Channel.CheckoutAsync(customerId);
+        }
+        
+        public OnlineStore.Web.OrderService.OrderDto GetOrder(System.Guid orderId) {
+            return base.Channel.GetOrder(orderId);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.OrderService.OrderDto> GetOrderAsync(System.Guid orderId) {
+            return base.Channel.GetOrderAsync(orderId);
+        }
+        
+        public OnlineStore.Web.OrderService.OrderDto[] GetOrdersForUser(System.Guid userId) {
+            return base.Channel.GetOrdersForUser(userId);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.OrderService.OrderDto[]> GetOrdersForUserAsync(System.Guid userId) {
+            return base.Channel.GetOrdersForUserAsync(userId);
+        }
+        
+        public OnlineStore.Web.OrderService.OrderDto[] GetAllOrders() {
+            return base.Channel.GetAllOrders();
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.OrderService.OrderDto[]> GetAllOrdersAsync() {
+            return base.Channel.GetAllOrdersAsync();
+        }
+        
+        public void Confirm(System.Guid orderId) {
+            base.Channel.Confirm(orderId);
+        }
+        
+        public System.Threading.Tasks.Task ConfirmAsync(System.Guid orderId) {
+            return base.Channel.ConfirmAsync(orderId);
+        }
+        
+        public void Dispatch(System.Guid orderId) {
+            base.Channel.Dispatch(orderId);
+        }
+        
+        public System.Threading.Tasks.Task DispatchAsync(System.Guid orderId) {
+            return base.Channel.DispatchAsync(orderId);
         }
     }
 }

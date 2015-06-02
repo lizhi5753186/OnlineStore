@@ -1,6 +1,6 @@
 ﻿namespace OnlineStore.ServiceContracts.ModelDTOs
 {
-    public enum OrderStatus : int
+    public enum OrderStatusDto : int
     {
         Created = 0,
         Paid = 1,

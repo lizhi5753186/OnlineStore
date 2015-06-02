@@ -17,23 +17,24 @@ namespace OnlineStore.Web.Controllers
 {
     [Authorize]
     [HandleError]
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
         // 获取当前登录用户的ID值。
-        protected Guid UserId
-        {
-            get
-            {
-                if (Session["UserId"] != null)
-                    return (Guid)Session["UserId"];
-                else
-                {
-                    var id = new Guid(Membership.GetUser().ProviderUserKey.ToString());
-                    Session["UserId"] = id;
-                    return id;
-                }
-            }
-        }
+        // 为了代码复用，把UserId封装到ControllerBase抽象类中去
+        //protected Guid UserId
+        //{
+        //    get
+        //    {
+        //        if (Session["UserId"] != null)
+        //            return (Guid)Session["UserId"];
+        //        else
+        //        {
+        //            var id = new Guid(Membership.GetUser().ProviderUserKey.ToString());
+        //            Session["UserId"] = id;
+        //            return id;
+        //        }
+        //    }
+        //}
 
         //
         // GET: /Account/Login
@@ -156,7 +157,7 @@ namespace OnlineStore.Web.Controllers
 
         //
         // GET: /Account/Manage
-
+        [Authorize]
         public ActionResult Manage()
         {
             using (var proxy = new UserServiceClient())
@@ -170,7 +171,7 @@ namespace OnlineStore.Web.Controllers
         // POST: /Account/Manage
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Manage(UserAccountModel model)
         {
             using(var proxy = new UserServiceClient())
@@ -179,11 +180,6 @@ namespace OnlineStore.Web.Controllers
                 proxy.UpdateUsers(new List<UserDto>() { userDto }.ToArray());
                 return RedirectToSuccess("更新账户信息成功！", "Account", "Account");
             }
-        }
-
-        protected ActionResult RedirectToSuccess(string pageTitle, string action = "Index", string controller = "Home", int waitSeconds = 3)
-        {
-            return this.RedirectToAction("SuccessPage", "Home", new { pageTitle = pageTitle, retAction = action, retController = controller, waitSeconds = waitSeconds });
         }
 
         #region Helpers

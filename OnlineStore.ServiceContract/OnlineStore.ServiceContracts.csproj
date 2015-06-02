@@ -49,8 +49,10 @@
     <Compile Include="ModelDTOs\FaultData.cs" />
     <Compile Include="ModelDTOs\OrderDto.cs" />
     <Compile Include="ModelDTOs\OrderItemDto.cs" />
-    <Compile Include="ModelDTOs\OrderStatus.cs" />
+    <Compile Include="ModelDTOs\OrderStatusDto.cs" />
+    <Compile Include="ModelDTOs\ProductCategorizationDto.cs" />
     <Compile Include="ModelDTOs\ProductDto.cs" />
+    <Compile Include="ModelDTOs\RoleDto.cs" />
     <Compile Include="ModelDTOs\ShoppingCartDto.cs" />
     <Compile Include="ModelDTOs\ShoppingCartItemDto.cs" />
     <Compile Include="ModelDTOs\UserDto.cs" />

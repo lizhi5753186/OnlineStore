@@ -13,9 +13,9 @@ namespace OnlineStore.Repositories.EntityFramework.ModelConfigurations
             Property(ur => ur.Id)
                 .IsRequired()
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(ur => ur.RoleID)
+            Property(ur => ur.RoleId)
                 .IsRequired();
-            Property(ur => ur.UserID)
+            Property(ur => ur.UserId)
                 .IsRequired();
         }
     }

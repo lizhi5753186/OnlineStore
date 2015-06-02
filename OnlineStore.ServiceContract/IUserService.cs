@@ -29,7 +29,7 @@ namespace OnlineStore.ServiceContracts
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        void DeleteUsers(UserDto userDto);
+        void DeleteUsers(List<UserDto> userDtos);
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
@@ -47,6 +47,44 @@ namespace OnlineStore.ServiceContracts
         [FaultContract(typeof(FaultData))]
         UserDto GetUserByName(string userName);
 
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        IList<UserDto> GetUsers();
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        IList<RoleDto> GetRoles();
+
+        [FaultContract(typeof(FaultData))]
+        RoleDto GetRoleByKey(Guid id);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        IList<RoleDto> CreateRoles(List<RoleDto> roleDataObjects);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        IList<RoleDto> UpdateRoles(List<RoleDto> roleDataObjects);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        void DeleteRoles(List<string> roleList);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        void AssignRole(Guid userId, Guid roleId);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        void UnassignRole(Guid userId);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        RoleDto GetRoleByUserName(string userName);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        IList<OrderDto> GetOrdersForUser(string userName);
         #endregion
     }
 }

@@ -54,9 +54,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -83,7 +88,9 @@
     <Content Include="OrderService.svc" />
     <Content Include="ProductService.svc" />
     <Content Include="UserService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddressResolver.cs" />
@@ -111,15 +118,25 @@
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnlineStore.Domain\OnlineStore.Domain.csproj">
       <Project>{1ae7732f-2faf-407e-89dd-bad81c4132e0}</Project>
       <Name>OnlineStore.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineStore.Events.Handlers\OnlineStore.Events.Handlers.csproj">
+      <Project>{2471e6b9-1030-48b8-bbc4-5018a221fbe2}</Project>
+      <Name>OnlineStore.Events.Handlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineStore.Events\OnlineStore.Events.csproj">
+      <Project>{f165abc2-f76a-4fd7-8675-833264855221}</Project>
+      <Name>OnlineStore.Events</Name>
     </ProjectReference>
     <ProjectReference Include="..\OnlineStore.Infrastructure\OnlineStore.Infrastructure.csproj">
       <Project>{9dde33cc-cf3c-436e-8a5f-4e1f0f8b603e}</Project>

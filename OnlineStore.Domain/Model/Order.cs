@@ -2,31 +2,46 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OnlineStore.Domain.Events;
 
 namespace OnlineStore.Domain.Model
 {
     public class Order : AggregateRoot
     {
-        private List<OrderItem> orderItems = new List<OrderItem>();
+        private List<OrderItem> _orderItems = new List<OrderItem>();
 
+        #region Public Properties
+        // 获取或设置订单的状态
+        public OrderStatus Status { get; set; }
+
+        /// <summary>
+        /// 获取或设置订单的创建日期
+        /// </summary>
         public DateTime CreatedDate { get; set; }
 
+        /// <summary>
+        /// 获取或设置订单的发货日期
+        /// </summary>
         public DateTime? DispatchedDate { get; set; }
 
+        /// <summary>
+        /// 获取或设置订单的派送日期
+        /// </summary>
         public DateTime? DeliveredDate { get; set; }
+
         public virtual List<OrderItem> OrderItems
         { 
             get 
             {
-                return orderItems; 
+                return _orderItems; 
             }
             set
             {
-                orderItems = value;
+                _orderItems = value;
             }
         }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         public Address DeliveryAddress
         { 
@@ -44,5 +59,34 @@ namespace OnlineStore.Domain.Model
                 return this.OrderItems.Sum(p => p.ItemAmout);
             }
         }
+
+        #endregion 
+
+        #region Ctor
+        public Order()
+        {
+            CreatedDate = DateTime.Now;
+            Status = OrderStatus.Created;
+        }
+
+        #endregion 
+
+        #region Public Methods
+        /// <summary>
+        /// 当客户完成收货后，对销售订单进行确认。
+        /// </summary>
+        public void Confirm()
+        {
+            DomainEvent.Publish<OrderConfirmedEvent>(new OrderConfirmedEvent(this) { ConfirmedDate = DateTime.Now, OrderId = this.Id, UserEmailAddress = this.User.Email });
+        }
+
+        /// <summary>
+        /// 处理发货。
+        /// </summary>
+        public void Dispatch()
+        {
+            DomainEvent.Publish<OrderDispatchedEvent>(new OrderDispatchedEvent(this) { DispatchedDate = DateTime.Now, OrderId = this.Id, UserEmailAddress = this.User.Email });
+        }
+        #endregion
     }
 }
