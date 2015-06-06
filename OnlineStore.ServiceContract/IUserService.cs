@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using OnlineStore.Infrastructure.Caching;
 using OnlineStore.ServiceContracts.ModelDTOs;
 
 namespace OnlineStore.ServiceContracts
@@ -72,14 +73,17 @@ namespace OnlineStore.ServiceContracts
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetRoleByUserName")]
         void AssignRole(Guid userId, Guid roleId);
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetRoleByUserName")]
         void UnassignRole(Guid userId);
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Get)]
         RoleDto GetRoleByUserName(string userName);
 
         [OperationContract]

@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using OnlineStore.ServiceContracts.ModelDTOs;
+using OnlineStore.Infrastructure.Caching;
 
 namespace OnlineStore.ServiceContracts
 {
@@ -16,27 +17,40 @@ namespace OnlineStore.ServiceContracts
 
         [OperationContract]
         [FaultContract(typeof (FaultData))]
+        // 因为创建了新商品后，缓存已失效了，所以需要移除相对应的缓存
+        [Cache(CachingMethod.Remove, "GetProductsForCategory",
+            "GetNewProducts",
+            "GetProducts",
+            "GetProductById")]
         List<ProductDto> CreateProducts(List<ProductDto> productsDtos);
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetCategories", "GetCategoryById")]
         List<CategoryDto> CreateCategories(List<CategoryDto> categoriDtos);
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetProductsForCategory",
+            "GetNewProducts",
+            "GetProducts", "GetProductById")]
         List<ProductDto> UpdateProducts(List<ProductDto> productsDtos);
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetCategories", "GetCategoryById")]
         List<CategoryDto> UpdateCategories(List<CategoryDto> categoriDtos);
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetProductsForCategory",
+            "GetNewProducts",
+            "GetProducts", "GetProductById")]
         void DeleteProducts(List<string> produList);
-
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetCategories", "GetCategoryById")]
         void DeleteCategories(List<string> categoryList);
 
         /// <summary>
@@ -47,6 +61,7 @@ namespace OnlineStore.ServiceContracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetProductsForCategory")]
         ProductCategorizationDto CategorizeProduct(Guid productId, Guid categoryId);
 
         /// <summary>
@@ -56,38 +71,43 @@ namespace OnlineStore.ServiceContracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Remove, "GetProductsForCategory")]
         void UncategorizeProduct(Guid productId);
 
-            // 获得所有商品的契约方法
+        // 获得所有商品的契约方法
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Get)]
         IEnumerable<ProductDto> GetProducts();
 
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Get)]
         IEnumerable<ProductDto> GetProductsForCategory(Guid categoryId);
-
 
         // 获得新上市的商品的契约方法
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Get)]
         IEnumerable<ProductDto> GetNewProducts(int count);
 
         // 获得所有类别的契约方法
         [OperationContract]
         [FaultContract(typeof (FaultData))]
+        [Cache(CachingMethod.Get)]
         CategoryDto GetCategoryById(Guid id);
 
         // 获得所有类别的契约方法
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Get)]
         IEnumerable<CategoryDto> GetCategories();
 
         // 根据商品Id来获得商品的契约方法
         [OperationContract]
         [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Get)]
         ProductDto GetProductById(Guid id);
-
 
         #endregion
     }
