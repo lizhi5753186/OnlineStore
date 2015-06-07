@@ -186,5 +186,29 @@ namespace OnlineStore.Application
                 throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
             }
         }
+
+        public ProductDtoWithPagination GetProductsWithPagination(Pagination pagination)
+        {
+            try
+            {
+                return _productService.GetProductsWithPagination(pagination);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
+
+        public ProductDtoWithPagination GetProductsForCategoryWithPagination(Guid categoryId, Pagination pagination)
+        {
+            try
+            {
+                return _productService.GetProductsForCategoryWithPagination(categoryId, pagination);
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException<FaultData>(FaultData.CreateFromException(ex), FaultData.CreateFaultReason(ex));
+            }
+        }
     }
 }

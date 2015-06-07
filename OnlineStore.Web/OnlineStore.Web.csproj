@@ -349,23 +349,29 @@
     <Content Include="Service References\ProductService\OnlineStore.Web.ProductService.CategoryDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ProductService\OnlineStore.Web.ProductService.ProductCategorizationDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\ProductService\OnlineStore.Web.ProductService.ProductDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\ProductService\OnlineStore.Web.ProductService.ProductCategorizationDto.datasource">
+    <Content Include="Service References\ProductService\OnlineStore.Web.ProductService.ProductDtoWithPagination.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ProductService\ProductService.disco" />
     <None Include="Service References\ProductService\configuration91.svcinfo" />
     <None Include="Service References\ProductService\configuration.svcinfo" />
-    <None Include="Service References\ProductService\ProductService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ProductService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service References\UserService\OnlineStore.Web.UserService.UserDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\OnlineStore.Web.UserService.OrderDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\OnlineStore.Web.UserService.RoleDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ProductService\ProductService.wsdl" />
@@ -379,12 +385,9 @@
     <None Include="Service References\ProductService\ProductService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\UserService\OnlineStore.Web.UserService.OrderDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UserService\OnlineStore.Web.UserService.RoleDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
+    <None Include="Service References\ProductService\ProductService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\UserService\UserService.disco" />
     <None Include="Service References\UserService\configuration91.svcinfo" />
     <None Include="Service References\UserService\configuration.svcinfo" />

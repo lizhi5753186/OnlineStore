@@ -53,6 +53,21 @@ namespace OnlineStore.Application.ServiceImplementations
             return result;
         }
 
+        public ProductDtoWithPagination GetProductsWithPagination(Pagination pagination)
+        {
+            var pagedProducts = _productRepository.GetAll(sp => sp.Name, SortOrder.Ascending, pagination.PageNumber,
+                pagination.PageSize);
+            pagination.TotalPages = pagedProducts.TotalPages;
+
+            var productDtoList = new List<ProductDto>();
+            pagedProducts.PageData.ToList().ForEach(p=>productDtoList.Add(Mapper.Map<Product, ProductDto>(p)));
+            return  new ProductDtoWithPagination()
+            {
+                Pagination = pagination,
+                ProductDtos = productDtoList
+            };
+        }
+
         public IEnumerable<ProductDto> GetProductsForCategory(Guid categoryId)
         {
             var result = new List<ProductDto>();
@@ -61,6 +76,32 @@ namespace OnlineStore.Application.ServiceImplementations
             var products = _productCategorizationRepository.GetProductsForCategory(category);
             products.ToList().ForEach(p=>result.Add(Mapper.Map<Product, ProductDto>(p)));
             return result;
+        }
+
+        public ProductDtoWithPagination GetProductsForCategoryWithPagination(Guid categoryId, Pagination pagination)
+        {
+            var category = _categoryRepository.GetByKey(categoryId);
+            var pagedProducts = _productCategorizationRepository.GetProductsForCategoryWithPagination(category, pagination.PageNumber,
+                pagination.PageSize);
+            if (pagedProducts == null)
+            {
+                pagination.TotalPages = 0;
+                return new ProductDtoWithPagination()
+                {
+                    Pagination = pagination,
+                    ProductDtos = new List<ProductDto>()
+                };
+            }
+            
+            pagination.TotalPages = pagedProducts.TotalPages;
+            var productDtoList = new List<ProductDto>();
+            pagedProducts.PageData.ToList().ForEach(p=>productDtoList.Add(Mapper.Map<Product, ProductDto>(p)));
+            return new ProductDtoWithPagination()
+            {
+
+                Pagination = pagination,
+                ProductDtos = productDtoList
+            };
         }
 
         public IEnumerable<ProductDto> GetNewProducts(int count)
@@ -189,6 +230,8 @@ namespace OnlineStore.Application.ServiceImplementations
             var product = _productRepository.GetByKey(productId);
             _domainService.Uncategorize(product);
         }
+
+      
         #endregion  
     }
 }

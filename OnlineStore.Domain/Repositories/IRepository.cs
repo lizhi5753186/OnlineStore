@@ -42,7 +42,25 @@ namespace OnlineStore.Domain.Repositories
 
         void Update(TAggregateRoot aggregateRoot);
 
+        #region 分页支持
         #endregion 
+        PagedResult<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, 
+            SortOrder sortOrder, int pageNumber, int pageSize);
+
+        PagedResult<TAggregateRoot> GetAll(
+            ISpecification<TAggregateRoot> specification, 
+            Expression<Func<TAggregateRoot, dynamic>> sortPredicate, 
+            SortOrder sortOrder, int pageNumber, int pageSize);
+
+        PagedResult<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, 
+            SortOrder sortOrder, int pageNumber, int pageSize, 
+            params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
+
+        PagedResult<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, 
+            Expression<Func<TAggregateRoot, dynamic>> sortPredicate, 
+            SortOrder sortOrder, int pageNumber, int pageSize, 
+            params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);
+        #endregion
         #region 饥饿加载方式
 
         TAggregateRoot GetBySpecification(ISpecification<TAggregateRoot> specification, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties);

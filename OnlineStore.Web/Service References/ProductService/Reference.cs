@@ -385,6 +385,144 @@ namespace OnlineStore.Web.ProductService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Pagination", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class Pagination : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TotalPagesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageNumber {
+            get {
+                return this.PageNumberField;
+            }
+            set {
+                if ((this.PageNumberField.Equals(value) != true)) {
+                    this.PageNumberField = value;
+                    this.RaisePropertyChanged("PageNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TotalPages {
+            get {
+                return this.TotalPagesField;
+            }
+            set {
+                if ((this.TotalPagesField.Equals(value) != true)) {
+                    this.TotalPagesField = value;
+                    this.RaisePropertyChanged("TotalPages");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductDtoWithPagination", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+    [System.SerializableAttribute()]
+    public partial class ProductDtoWithPagination : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OnlineStore.Web.ProductService.Pagination PaginationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private OnlineStore.Web.ProductService.ProductDto[] ProductDtosField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OnlineStore.Web.ProductService.Pagination Pagination {
+            get {
+                return this.PaginationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaginationField, value) != true)) {
+                    this.PaginationField = value;
+                    this.RaisePropertyChanged("Pagination");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public OnlineStore.Web.ProductService.ProductDto[] ProductDtos {
+            get {
+                return this.ProductDtosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductDtosField, value) != true)) {
+                    this.ProductDtosField = value;
+                    this.RaisePropertyChanged("ProductDtos");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="", ConfigurationName="ProductService.IProductService")]
     public interface IProductService {
@@ -452,12 +590,26 @@ namespace OnlineStore.Web.ProductService {
         [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetProducts", ReplyAction="urn:IProductService/GetProductsResponse")]
         System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDto[]> GetProductsAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetProductsWithPagination", ReplyAction="urn:IProductService/GetProductsWithPaginationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/GetProductsWithPaginationFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.ProductService.ProductDtoWithPagination GetProductsWithPagination(OnlineStore.Web.ProductService.Pagination pagination);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetProductsWithPagination", ReplyAction="urn:IProductService/GetProductsWithPaginationResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDtoWithPagination> GetProductsWithPaginationAsync(OnlineStore.Web.ProductService.Pagination pagination);
+        
         [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetProductsForCategory", ReplyAction="urn:IProductService/GetProductsForCategoryResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/GetProductsForCategoryFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
         OnlineStore.Web.ProductService.ProductDto[] GetProductsForCategory(System.Guid categoryId);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetProductsForCategory", ReplyAction="urn:IProductService/GetProductsForCategoryResponse")]
         System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDto[]> GetProductsForCategoryAsync(System.Guid categoryId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetProductsForCategoryWithPagination", ReplyAction="urn:IProductService/GetProductsForCategoryWithPaginationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/GetProductsForCategoryWithPaginationFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
+        OnlineStore.Web.ProductService.ProductDtoWithPagination GetProductsForCategoryWithPagination(System.Guid categoryId, OnlineStore.Web.ProductService.Pagination pagination);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetProductsForCategoryWithPagination", ReplyAction="urn:IProductService/GetProductsForCategoryWithPaginationResponse")]
+        System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDtoWithPagination> GetProductsForCategoryWithPaginationAsync(System.Guid categoryId, OnlineStore.Web.ProductService.Pagination pagination);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:IProductService/GetNewProducts", ReplyAction="urn:IProductService/GetNewProductsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(OnlineStore.Web.ProductService.FaultData), Action="urn:IProductService/GetNewProductsFaultDataFault", Name="FaultData", Namespace="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs")]
@@ -587,12 +739,28 @@ namespace OnlineStore.Web.ProductService {
             return base.Channel.GetProductsAsync();
         }
         
+        public OnlineStore.Web.ProductService.ProductDtoWithPagination GetProductsWithPagination(OnlineStore.Web.ProductService.Pagination pagination) {
+            return base.Channel.GetProductsWithPagination(pagination);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDtoWithPagination> GetProductsWithPaginationAsync(OnlineStore.Web.ProductService.Pagination pagination) {
+            return base.Channel.GetProductsWithPaginationAsync(pagination);
+        }
+        
         public OnlineStore.Web.ProductService.ProductDto[] GetProductsForCategory(System.Guid categoryId) {
             return base.Channel.GetProductsForCategory(categoryId);
         }
         
         public System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDto[]> GetProductsForCategoryAsync(System.Guid categoryId) {
             return base.Channel.GetProductsForCategoryAsync(categoryId);
+        }
+        
+        public OnlineStore.Web.ProductService.ProductDtoWithPagination GetProductsForCategoryWithPagination(System.Guid categoryId, OnlineStore.Web.ProductService.Pagination pagination) {
+            return base.Channel.GetProductsForCategoryWithPagination(categoryId, pagination);
+        }
+        
+        public System.Threading.Tasks.Task<OnlineStore.Web.ProductService.ProductDtoWithPagination> GetProductsForCategoryWithPaginationAsync(System.Guid categoryId, OnlineStore.Web.ProductService.Pagination pagination) {
+            return base.Channel.GetProductsForCategoryWithPaginationAsync(categoryId, pagination);
         }
         
         public OnlineStore.Web.ProductService.ProductDto[] GetNewProducts(int count) {
