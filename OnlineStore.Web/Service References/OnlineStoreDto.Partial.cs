@@ -31,7 +31,7 @@ namespace OnlineStore.Web.OrderService
 
        public string CreatedDateText
        {
-           get { return this.CreateDate == null ? "N/A" : this.CreateDate.Value.ToShortDateString(); }
+           get { return this.CreatedDate == null ? "N/A" : this.CreatedDate.Value.ToShortDateString(); }
        }
 
        public string DispatchedDateText

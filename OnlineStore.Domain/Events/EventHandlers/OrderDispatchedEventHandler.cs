@@ -22,7 +22,7 @@ namespace OnlineStore.Domain.Events.EventHandlers
             // 更新事件源对象的属性
             if (order == null) return;
 
-            order.DeliveredDate = @event.DispatchedDate;
+            order.DispatchedDate = @event.DispatchedDate;
             order.Status = OrderStatus.Dispatched;
 
             // 这里把领域事件认为是一种消息，推送到EventBus中进行进一步处理。

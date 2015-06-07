@@ -55,7 +55,7 @@
   <xs:element name="CategoryDto" nillable="true" type="tns:CategoryDto" />
   <xs:complexType name="OrderDto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="DeliveredDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="DispatchedDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />

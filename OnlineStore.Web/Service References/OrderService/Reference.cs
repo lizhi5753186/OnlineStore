@@ -520,7 +520,7 @@ namespace OnlineStore.Web.OrderService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> CreateDateField;
+        private System.Nullable<System.DateTime> CreatedDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> DeliveredDateField;
@@ -581,14 +581,14 @@ namespace OnlineStore.Web.OrderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> CreateDate {
+        public System.Nullable<System.DateTime> CreatedDate {
             get {
-                return this.CreateDateField;
+                return this.CreatedDateField;
             }
             set {
-                if ((this.CreateDateField.Equals(value) != true)) {
-                    this.CreateDateField = value;
-                    this.RaisePropertyChanged("CreateDate");
+                if ((this.CreatedDateField.Equals(value) != true)) {
+                    this.CreatedDateField = value;
+                    this.RaisePropertyChanged("CreatedDate");
                 }
             }
         }

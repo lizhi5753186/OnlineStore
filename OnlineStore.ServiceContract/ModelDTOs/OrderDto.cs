@@ -9,7 +9,7 @@ namespace OnlineStore.ServiceContracts.ModelDTOs
 
         public OrderStatusDto? Status { get; set; }
 
-        public DateTime? CreateDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public DateTime? DispatchedDate { get; set; }
         public DateTime? DeliveredDate { get; set; }
 
