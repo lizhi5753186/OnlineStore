@@ -19,6 +19,8 @@ namespace OnlineStore.ServiceContracts
         [FaultContract(typeof (FaultData))]
         // 因为创建了新商品后，缓存已失效了，所以需要移除相对应的缓存
         [Cache(CachingMethod.Remove, "GetProductsForCategory",
+            "GetProductsWithPagination",
+            "GetProductsForCategoryWithPagination",
             "GetNewProducts",
             "GetProducts",
             "GetProductById")]
@@ -32,6 +34,8 @@ namespace OnlineStore.ServiceContracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         [Cache(CachingMethod.Remove, "GetProductsForCategory",
+            "GetProductsWithPagination",
+            "GetProductsForCategoryWithPagination",
             "GetNewProducts",
             "GetProducts", "GetProductById")]
         List<ProductDto> UpdateProducts(List<ProductDto> productsDtos);
@@ -44,6 +48,8 @@ namespace OnlineStore.ServiceContracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         [Cache(CachingMethod.Remove, "GetProductsForCategory",
+            "GetProductsWithPagination",
+            "GetProductsForCategoryWithPagination",
             "GetNewProducts",
             "GetProducts", "GetProductById")]
         void DeleteProducts(List<string> produList);
@@ -61,7 +67,7 @@ namespace OnlineStore.ServiceContracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        [Cache(CachingMethod.Remove, "GetProductsForCategory")]
+        [Cache(CachingMethod.Remove, "GetProductsForCategory", "GetProductsForCategoryWithPagination")]
         ProductCategorizationDto CategorizeProduct(Guid productId, Guid categoryId);
 
         /// <summary>
@@ -71,7 +77,7 @@ namespace OnlineStore.ServiceContracts
         /// <returns></returns>
         [OperationContract]
         [FaultContract(typeof(FaultData))]
-        [Cache(CachingMethod.Remove, "GetProductsForCategory")]
+        [Cache(CachingMethod.Remove, "GetProductsForCategory", "GetProductsForCategoryWithPagination")]
         void UncategorizeProduct(Guid productId);
 
         // 获得所有商品的契约方法
@@ -83,7 +89,18 @@ namespace OnlineStore.ServiceContracts
         [OperationContract]
         [FaultContract(typeof(FaultData))]
         [Cache(CachingMethod.Get)]
+        ProductDtoWithPagination GetProductsWithPagination(Pagination pagination);
+
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Get)]
         IEnumerable<ProductDto> GetProductsForCategory(Guid categoryId);
+
+        [OperationContract]
+        [FaultContract(typeof(FaultData))]
+        [Cache(CachingMethod.Get)]
+        ProductDtoWithPagination GetProductsForCategoryWithPagination(Guid categoryId, Pagination pagination);
 
         // 获得新上市的商品的契约方法
         [OperationContract]

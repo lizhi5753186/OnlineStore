@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Globalization;
-using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 using System.Web.Routing;
 using OnlineStore.Web.UserService;
+using System.Web.Mvc;
 
 namespace OnlineStore.Web
 {

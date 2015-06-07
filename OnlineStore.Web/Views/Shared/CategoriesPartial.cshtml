@@ -10,7 +10,7 @@
             @foreach(var item in Model)
             {
             <div class="linkmenu">
-                <img src="/images/spacer.jpg" alt="" width="20" height="19"><span class="red">&bull;</span>&nbsp;&nbsp;@Html.ActionLink(item.Name, "Category", "Home", new { categoryID = item.Id }, null)</div>
+                <img src="/images/spacer.jpg" alt="" width="20" height="19"><span class="red">&bull;</span>&nbsp;&nbsp;@Html.ActionLink(item.Name, "Category", "Home", new { categoryId = item.Id }, null)</div>
             }
         </td>
     </tr>

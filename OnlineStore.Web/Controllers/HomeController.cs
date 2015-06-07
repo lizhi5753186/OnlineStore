@@ -31,15 +31,15 @@ namespace OnlineStore.Web.Controllers
         }
         #endregion 
 
-        public ActionResult Index()
+        public ActionResult Index(string categoryId = null, int pageNumber = 1)
         {
             return View();
         }
 
-        public ActionResult Category(string categoryId = null)
+        public ActionResult Category(string categoryId = null, int pageNumber = 1)
         {
             ViewData["CategoryId"] = categoryId;
-            
+            ViewData["FromIndexPage"] = false;
             return View();
         }
 

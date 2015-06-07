@@ -19,7 +19,7 @@
                     <tr>
                         <td width="300" height="55" class="logo"></td>
                         <td width="480" class="menu">
-                            <ul class="sf-menu">
+                             <ul class="sf-menu">
                                 <li>@Html.ActionLink("首页", "Index", "Home")</li>
                                 @if (User.Identity.IsAuthenticated)
                                 {
@@ -27,7 +27,7 @@
                                     <ul>
                                         <li>@Html.ActionLink("订单", "Orders", "Home")</li>
                                         <li>@Html.ActionLink("账户", "Manage", "Account")</li>
-                                        <li>@Html.ActionLink("购物篮", "ShoppingCart", "Home")</li>
+                                        <li>@Html.ActionLink("购物车", "ShoppingCart", "Home")</li>
                                     </ul>
                                 </li>
                                 }
@@ -77,8 +77,14 @@
 
                             <table width="774" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
-                                    <td>@RenderBody()</td>
+                                    @(MvcSiteMap.Instance.Navigator())
                                 </tr>
+                                <tr>
+                                    <td>
+                                        @RenderBody()
+                                    </td>
+                                </tr>
+
                             </table>
                         </td>
                     </tr>

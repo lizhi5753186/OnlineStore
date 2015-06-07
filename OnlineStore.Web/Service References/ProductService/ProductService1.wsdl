@@ -112,8 +112,32 @@
         <soap:fault use="literal" name="FaultDataFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GetProductsWithPagination">
+      <soap:operation soapAction="urn:IProductService/GetProductsWithPagination" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="GetProductsForCategory">
       <soap:operation soapAction="urn:IProductService/GetProductsForCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultDataFault">
+        <soap:fault use="literal" name="FaultDataFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsForCategoryWithPagination">
+      <soap:operation soapAction="urn:IProductService/GetProductsForCategoryWithPagination" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

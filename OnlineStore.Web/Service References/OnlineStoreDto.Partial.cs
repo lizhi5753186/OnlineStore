@@ -73,3 +73,21 @@ namespace OnlineStore.Web.OrderService
        }
    }
 }
+
+namespace OnlineStore.Web.ProductService
+{
+    public partial class ProductDto
+    {
+        public string CategoryName
+        {
+            get
+            {
+                if (this.Category == null)
+                    return "(未分类)";
+                else
+                    return this.Category.Name;
+            }
+        }
+    }
+}
+

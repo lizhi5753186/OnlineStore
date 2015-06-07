@@ -50,8 +50,10 @@
     <Compile Include="ModelDTOs\OrderDto.cs" />
     <Compile Include="ModelDTOs\OrderItemDto.cs" />
     <Compile Include="ModelDTOs\OrderStatusDto.cs" />
+    <Compile Include="ModelDTOs\Pagination.cs" />
     <Compile Include="ModelDTOs\ProductCategorizationDto.cs" />
     <Compile Include="ModelDTOs\ProductDto.cs" />
+    <Compile Include="ModelDTOs\ProductDtoWithPagination.cs" />
     <Compile Include="ModelDTOs\RoleDto.cs" />
     <Compile Include="ModelDTOs\ShoppingCartDto.cs" />
     <Compile Include="ModelDTOs\ShoppingCartItemDto.cs" />
@@ -63,6 +65,9 @@
       <Project>{9dde33cc-cf3c-436e-8a5f-4e1f0f8b603e}</Project>
       <Name>OnlineStore.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<node title="首页" area="" action="Index" controller="Home">
+  <node title="我的" area="UserCenter" action="Manage" controller="Account">
+    <node title="订单" area="" action="Orders" controller="Home" />
+    <node title="账户" area="" action="Manage" controller="Account" />
+    <node title="购物车" area="" action="ShoppingCart" controller="Home" />
+  </node>
+  <node title="关于" area="AboutCenter" action="About" controller="Home" >
+    <node title="Online Store 项目" area="" action="About" controller="Home" />
+    <node title="联系方式" area="" action="Contact" controller="Home" />
+  </node>
+</node>

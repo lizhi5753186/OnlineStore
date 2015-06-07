@@ -89,6 +89,15 @@
   <wsdl:message name="IProductService_GetProducts_FaultDataFault_FaultMessage">
     <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q9:FaultData" />
   </wsdl:message>
+  <wsdl:message name="IProductService_GetProductsWithPagination_InputMessage">
+    <wsdl:part name="parameters" element="GetProductsWithPagination" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetProductsWithPagination_OutputMessage">
+    <wsdl:part name="parameters" element="GetProductsWithPaginationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetProductsWithPagination_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q10:FaultData" />
+  </wsdl:message>
   <wsdl:message name="IProductService_GetProductsForCategory_InputMessage">
     <wsdl:part name="parameters" element="GetProductsForCategory" />
   </wsdl:message>
@@ -96,7 +105,16 @@
     <wsdl:part name="parameters" element="GetProductsForCategoryResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetProductsForCategory_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q10:FaultData" />
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q11:FaultData" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetProductsForCategoryWithPagination_InputMessage">
+    <wsdl:part name="parameters" element="GetProductsForCategoryWithPagination" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetProductsForCategoryWithPagination_OutputMessage">
+    <wsdl:part name="parameters" element="GetProductsForCategoryWithPaginationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_GetProductsForCategoryWithPagination_FaultDataFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q12:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetNewProducts_InputMessage">
     <wsdl:part name="parameters" element="GetNewProducts" />
@@ -105,7 +123,7 @@
     <wsdl:part name="parameters" element="GetNewProductsResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetNewProducts_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q11:FaultData" />
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q13:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetCategoryById_InputMessage">
     <wsdl:part name="parameters" element="GetCategoryById" />
@@ -114,7 +132,7 @@
     <wsdl:part name="parameters" element="GetCategoryByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetCategoryById_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q12:FaultData" />
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q14:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetCategories_InputMessage">
     <wsdl:part name="parameters" element="GetCategories" />
@@ -123,7 +141,7 @@
     <wsdl:part name="parameters" element="GetCategoriesResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetCategories_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q13:FaultData" />
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q15:FaultData" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetProductById_InputMessage">
     <wsdl:part name="parameters" element="GetProductById" />
@@ -132,7 +150,7 @@
     <wsdl:part name="parameters" element="GetProductByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IProductService_GetProductById_FaultDataFault_FaultMessage">
-    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q14:FaultData" />
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/OnlineStore.ServiceContracts.ModelDTOs" name="detail" element="q16:FaultData" />
   </wsdl:message>
   <wsdl:portType name="IProductService">
     <wsdl:operation name="CreateProducts">
@@ -180,10 +198,20 @@
       <wsdl:output wsaw:Action="urn:IProductService/GetProductsResponse" message="IProductService_GetProducts_OutputMessage" />
       <wsdl:fault wsaw:Action="urn:IProductService/GetProductsFaultDataFault" name="FaultDataFault" message="IProductService_GetProducts_FaultDataFault_FaultMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetProductsWithPagination">
+      <wsdl:input wsaw:Action="urn:IProductService/GetProductsWithPagination" message="IProductService_GetProductsWithPagination_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/GetProductsWithPaginationResponse" message="IProductService_GetProductsWithPagination_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/GetProductsWithPaginationFaultDataFault" name="FaultDataFault" message="IProductService_GetProductsWithPagination_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetProductsForCategory">
       <wsdl:input wsaw:Action="urn:IProductService/GetProductsForCategory" message="IProductService_GetProductsForCategory_InputMessage" />
       <wsdl:output wsaw:Action="urn:IProductService/GetProductsForCategoryResponse" message="IProductService_GetProductsForCategory_OutputMessage" />
       <wsdl:fault wsaw:Action="urn:IProductService/GetProductsForCategoryFaultDataFault" name="FaultDataFault" message="IProductService_GetProductsForCategory_FaultDataFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsForCategoryWithPagination">
+      <wsdl:input wsaw:Action="urn:IProductService/GetProductsForCategoryWithPagination" message="IProductService_GetProductsForCategoryWithPagination_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IProductService/GetProductsForCategoryWithPaginationResponse" message="IProductService_GetProductsForCategoryWithPagination_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:IProductService/GetProductsForCategoryWithPaginationFaultDataFault" name="FaultDataFault" message="IProductService_GetProductsForCategoryWithPagination_FaultDataFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetNewProducts">
       <wsdl:input wsaw:Action="urn:IProductService/GetNewProducts" message="IProductService_GetNewProducts_InputMessage" />

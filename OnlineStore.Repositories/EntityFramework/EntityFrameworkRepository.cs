@@ -5,6 +5,7 @@ using System.Linq;
 using OnlineStore.Domain.Specifications;
 using System.Linq.Expressions;
 using OnlineStore.Domain.Repositories;
+using OnlineStore.Infrastructure;
 
 namespace OnlineStore.Repositories.EntityFramework
 {
@@ -207,5 +208,108 @@ namespace OnlineStore.Repositories.EntityFramework
             return queryable.ToList();
         }
         #endregion 
+    
+        #region 分页支持
+        public PagedResult<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize)
+        {
+            return GetAll(new AnySpecification<TAggregateRoot>(), sortPredicate, sortOrder, pageNumber, pageSize);
+        }
+
+        // 分页也就是每次只取出每页展示的数据大小
+        public PagedResult<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize)
+        {
+            if(pageNumber <= 0)
+                throw new ArgumentOutOfRangeException("pageNumber",pageNumber, "页码必须大于等于1");
+            if (pageSize <= 0)
+                throw new ArgumentOutOfRangeException("pageSize", pageSize, "每页大小必须大于或等于1");
+
+            var query = _efContext.DbContex.Set<TAggregateRoot>()
+                .Where(specification.Expression);
+            var skip = (pageNumber - 1)* pageSize;
+            var take = pageSize;
+            if (sortPredicate == null) 
+                throw new InvalidOperationException("基于分页功能的查询必须指定排序字段和排序顺序。");
+
+            switch (sortOrder)
+            {
+                case SortOrder.Ascending:
+                    var pagedGroupAscending = query.SortBy(sortPredicate).Skip(skip).Take(take).GroupBy(p => new { Total = query.Count() }).FirstOrDefault();
+
+                    if (pagedGroupAscending == null)
+                        return null;
+                    return new PagedResult<TAggregateRoot>(pagedGroupAscending.Key.Total, (pagedGroupAscending.Key.Total + pageSize - 1) / pageSize, pageSize, pageNumber, pagedGroupAscending.Select(p => p).ToList());
+                case SortOrder.Descending:
+                    var pagedGroupDescending = query.SortByDescending(sortPredicate).Skip(skip).Take(take).GroupBy(p => new { Total = query.Count() }).FirstOrDefault();
+                    if (pagedGroupDescending == null)
+                        return null;
+                    return new PagedResult<TAggregateRoot>(pagedGroupDescending.Key.Total, (pagedGroupDescending.Key.Total + pageSize - 1) / pageSize, pageSize, pageNumber, pagedGroupDescending.Select(p => p).ToList());
+                default:
+                    break;
+            }
+
+            throw new InvalidOperationException("基于分页功能的查询必须指定排序字段和排序顺序。");
+        }
+
+        public PagedResult<TAggregateRoot> GetAll(Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties)
+        {
+            return GetAll(new AnySpecification<TAggregateRoot>(), sortPredicate, sortOrder, pageNumber, pageSize, eagerLoadingProperties);
+        }
+
+        public PagedResult<TAggregateRoot> GetAll(ISpecification<TAggregateRoot> specification, Expression<Func<TAggregateRoot, dynamic>> sortPredicate, SortOrder sortOrder, int pageNumber, int pageSize, params Expression<Func<TAggregateRoot, dynamic>>[] eagerLoadingProperties)
+        {
+            if (pageNumber <= 0)
+                throw new ArgumentOutOfRangeException("pageNumber", pageNumber, "页码必须大于等于1");
+            if (pageSize <= 0)
+                throw new ArgumentOutOfRangeException("pageSize", pageSize, "每页大小必须大于或等于1");
+
+            // 将需要饥饿加载的内容添加到Include方法参数中
+            var dbset = _efContext.DbContex.Set<TAggregateRoot>();
+               
+            IQueryable<TAggregateRoot> query = null;
+            if (eagerLoadingProperties != null &&
+                eagerLoadingProperties.Length > 0)
+            {
+                var eagerLoadingProperty = eagerLoadingProperties[0];
+                var eagerLoadingPath = this.GetEagerLoadingPath(eagerLoadingProperty);
+                var dbquery = dbset.Include(eagerLoadingPath);
+                for (var i = 1; i < eagerLoadingProperties.Length; i++)
+                {
+                    eagerLoadingProperty = eagerLoadingProperties[i];
+                    eagerLoadingPath = this.GetEagerLoadingPath(eagerLoadingProperty);
+                    dbquery = dbquery.Include(eagerLoadingPath);
+                }
+
+                query = dbquery.Where(specification.Expression);
+            }
+            else
+                query = dbset.Where(specification.Expression);
+
+            var skip = (pageNumber - 1) * pageSize;
+            var take = pageSize;
+
+            if (sortPredicate == null)
+                throw new InvalidOperationException("基于分页功能的查询必须指定排序字段和排序顺序。");
+
+            switch (sortOrder)
+            {
+                case SortOrder.Ascending:
+                    var pagedGroupAscending = query.SortBy(sortPredicate).Skip(skip).Take(take).GroupBy(p => new { Total = query.Count() }).FirstOrDefault();
+
+                    if (pagedGroupAscending == null)
+                        return null;
+                    return new PagedResult<TAggregateRoot>(pagedGroupAscending.Key.Total, (pagedGroupAscending.Key.Total + pageSize - 1) / pageSize, pageSize, pageNumber, pagedGroupAscending.Select(p => p).ToList());
+                case SortOrder.Descending:
+                    var pagedGroupDescending = query.SortByDescending(sortPredicate).Skip(skip).Take(take).GroupBy(p => new { Total = query.Count() }).FirstOrDefault();
+                    if (pagedGroupDescending == null)
+                        return null;
+                    return new PagedResult<TAggregateRoot>(pagedGroupDescending.Key.Total, (pagedGroupDescending.Key.Total + pageSize - 1) / pageSize, pageSize, pageNumber, pagedGroupDescending.Select(p => p).ToList());
+                default:
+                    break;
+            }
+
+            throw new InvalidOperationException("基于分页功能的查询必须指定排序字段和排序顺序。");
+        }
+
+        #endregion
     }
 }
