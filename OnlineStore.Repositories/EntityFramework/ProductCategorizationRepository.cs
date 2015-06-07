@@ -47,6 +47,7 @@ namespace OnlineStore.Repositories.EntityFramework
             var pagedQuery = query.Skip(skip).Take(take).GroupBy(p => new {Total = query.Count()}).FirstOrDefault();
             return pagedQuery == null ? null : new PagedResult<Product>(pagedQuery.Key.Total, (pagedQuery.Key.Total + pageSize - 1) / pageSize, pageSize, pageNumber, pagedQuery.Select(p => p).ToList());
         }
+<<<<<<< HEAD
 
         public Category GetCategoryForProduct(Product product)
         {
@@ -60,5 +61,7 @@ namespace OnlineStore.Repositories.EntityFramework
                 select category;
             return query.FirstOrDefault();
         }
+=======
+>>>>>>> a8c78153bbcbc0d2584fbf09194fc3c900081a3f
     }
 }

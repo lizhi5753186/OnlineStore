@@ -73,6 +73,7 @@ namespace OnlineStore.Web.OrderService
        }
    }
 }
+<<<<<<< HEAD
 
 namespace OnlineStore.Web.ProductService
 {
@@ -91,3 +92,5 @@ namespace OnlineStore.Web.ProductService
     }
 }
 
+=======
+>>>>>>> a8c78153bbcbc0d2584fbf09194fc3c900081a3f
