@@ -17,7 +17,6 @@ namespace OnlineStore.Domain.Repositories
         /// <param name="pageSize">所请求的页大小</param>
         /// <returns>指定分类下的某页的商品信息</returns>
         PagedResult<Product> GetProductsForCategoryWithPagination(Category category, int pageNumber, int pageSize);
-<<<<<<< HEAD
 
         /// <summary>
         /// 获取商品所属的商品分类。
@@ -25,7 +24,5 @@ namespace OnlineStore.Domain.Repositories
         /// <param name="product">商品信息。</param>
         /// <returns>商品分类。</returns>
         Category GetCategoryForProduct(Product product);
-=======
->>>>>>> a8c78153bbcbc0d2584fbf09194fc3c900081a3f
     }
 }
