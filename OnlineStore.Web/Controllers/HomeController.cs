@@ -95,6 +95,10 @@ namespace OnlineStore.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// 结算操作
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public ActionResult Checkout()
         {

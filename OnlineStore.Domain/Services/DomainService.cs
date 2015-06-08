@@ -16,11 +16,7 @@ namespace OnlineStore.Domain.Services
         private readonly IRepositoryContext _repositoryContext;
         private readonly IShoppingCartItemRepository _shoppingCartItemRepository;
         private readonly IOrderRepository _orderRepository;
-        private readonly IProductRepository _productRepository;
-        private readonly ICategoryRepository _categoryRepository;
         private readonly IProductCategorizationRepository _productCategorizationRepository;
-        private readonly IUserRepository _userRepository;
-        private readonly IRoleRepository _roleRepository;
         private readonly IUserRoleRepository _userRoleRepository;
         #endregion
 
@@ -39,11 +35,7 @@ namespace OnlineStore.Domain.Services
             _repositoryContext = repositoryContext;
             _orderRepository = orderRepository;
             _shoppingCartItemRepository = shoppingCartItemRepository;
-            _categoryRepository = categoryRepository;
             _productCategorizationRepository = productCategorizationRepository;
-            _productRepository = productRepository;
-            _userRepository = userRepository;
-            _roleRepository = roleRepository;
             _userRoleRepository = userRoleRepository;
         }
 
