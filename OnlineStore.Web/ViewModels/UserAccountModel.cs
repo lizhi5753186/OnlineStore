@@ -133,6 +133,7 @@ namespace OnlineStore.Web.ViewModels
                 IsDisabled = d.IsDisabled,
                 RegisteredDate = d.RegisteredDate,
                 LastLogonDate = d.LastLogonDate,
+                Role = d.Role,
                 Contact = d.Contact,
                 PhoneNumber = d.PhoneNumber,
                 ContactAddressCity = d.ContactAddress.City,

@@ -77,7 +77,8 @@ namespace OnlineStore.Domain.Model
         /// </summary>
         public void Confirm()
         {
-            DomainEvent.Publish<OrderConfirmedEvent>(new OrderConfirmedEvent(this) { ConfirmedDate = DateTime.Now, OrderId = this.Id, UserEmailAddress = this.User.Email });
+            // 处理领域事件
+            DomainEvent.Handle<OrderConfirmedEvent>(new OrderConfirmedEvent(this) { ConfirmedDate = DateTime.Now, OrderId = this.Id, UserEmailAddress = this.User.Email });
         }
 
         /// <summary>
@@ -85,7 +86,8 @@ namespace OnlineStore.Domain.Model
         /// </summary>
         public void Dispatch()
         {
-            DomainEvent.Publish<OrderDispatchedEvent>(new OrderDispatchedEvent(this) { DispatchedDate = DateTime.Now, OrderId = this.Id, UserEmailAddress = this.User.Email });
+            // 处理领域事件
+            DomainEvent.Handle<OrderDispatchedEvent>(new OrderDispatchedEvent(this) { DispatchedDate = DateTime.Now, OrderId = this.Id, UserEmailAddress = this.User.Email });
         }
         #endregion
     }

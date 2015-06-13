@@ -49,7 +49,7 @@ namespace OnlineStore.Domain.Events
 
         #region Public Static Methods
 
-        public static void Publish<TDomainEvent>(TDomainEvent domainEvent)
+        public static void Handle<TDomainEvent>(TDomainEvent domainEvent)
             where TDomainEvent : class, IDomainEvent
         {
             // 找到对应的事件处理器来对事件进行处理
@@ -63,7 +63,7 @@ namespace OnlineStore.Domain.Events
             }
         }
 
-        public static void Publish<TDomainEvent>(TDomainEvent domainEvent, Action<TDomainEvent, bool, Exception> callback, TimeSpan? timeout = null)
+        public static void Handle<TDomainEvent>(TDomainEvent domainEvent, Action<TDomainEvent, bool, Exception> callback, TimeSpan? timeout = null)
             where TDomainEvent : class, IDomainEvent
         {
             var handlers = ServiceLocator.Instance.ResolveAll<IDomainEventHandler<TDomainEvent>>();

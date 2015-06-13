@@ -96,6 +96,8 @@ namespace OnlineStore.Events
                     var eventHandler = handler as IEventHandler<TEvent>;
                     if(eventHandler == null)
                         continue;
+
+                    // 异步处理
                     if (eventHandler.GetType().IsDefined(typeof(HandlesAsynchronouslyAttribute), false))
                     {
                         Task.Factory.StartNew((o) => eventHandler.Handle((TEvent)o), evnt);

@@ -213,7 +213,19 @@ namespace OnlineStore.Application.ServiceImplementations
             var users = _userRepository.GetAll();
             if (users == null)
                 return null;
-            var result = users.Select(user => Mapper.Map<User, UserDto>(user)).ToList();
+            var result = new List<UserDto>();
+            foreach (var user in users)
+            {
+                var userDto = Mapper.Map<User, UserDto>(user);
+                var role = _userRoleRepository.GetRoleForUser(user);
+                if (role != null)
+                {
+                    userDto.Role = Mapper.Map<Role, RoleDto>(role);
+                }
+
+                result.Add(userDto);
+            }
+
             return result;
         }
 

@@ -16,19 +16,19 @@
     @Html.ValidationSummary(true)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+            @Html.LabelFor(model => model.NameText)
         </div>
         <div class="editor-field">
             @Html.TextBoxFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.NameText)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
+            @Html.LabelFor(model => model.DescriptionText)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.DescriptionText)
         </div>
 }
 

@@ -176,6 +176,7 @@ namespace OnlineStore.Application.ServiceImplementations
                 var order = _orderRepository.GetByKey(orderId);
                 order.Confirm();
                 _orderRepository.Update(order);
+
                 RepositorytContext.Commit();
                 _eventBus.Commit();
                 transactionScope.Complete();

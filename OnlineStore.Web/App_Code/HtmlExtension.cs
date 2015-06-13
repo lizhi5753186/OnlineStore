@@ -161,6 +161,9 @@ namespace OnlineStore.Web
                     return MvcHtmlString.Empty;
                 var keyName = role.Name;
                 var permissionKey = (PermissionKeys)Enum.Parse(typeof(PermissionKeys), keyName);
+
+                // 通过用户的角色和对应对应的权限进行与操作
+                // 与结果等于用户角色时，表示用户角色与所需要的权限一样，则创建对应权限的链接
                 return (permissionKey & required) == permissionKey ? 
                     MvcHtmlString.Create(HtmlHelper.GenerateLink(helper.ViewContext.RequestContext, helper.RouteCollection, linkText, null, action, controller, null, null)) 
                     : MvcHtmlString.Empty;

@@ -1,5 +1,8 @@
 ﻿
  // ReSharper disable once CheckNamespace
+
+using System.ComponentModel.DataAnnotations;
+
 namespace OnlineStore.Web.OrderService
 {
    public partial class OrderDto
@@ -88,6 +91,40 @@ namespace OnlineStore.Web.ProductService
                     return this.Category.Name;
             }
         }
+
+        [Required(ErrorMessage = "请输入商品名称", AllowEmptyStrings = false)]
+        [Display(Name = "商品名称")]
+        public string NameText { get; set; }
+
+        [Required(ErrorMessage = "请输入商品说明", AllowEmptyStrings = false)]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "商品说明")]
+        public string DescriptionText { get; set; }
+
+        [Required(ErrorMessage = "请选择商品图片", AllowEmptyStrings = false)]
+        [Display(Name = "商品图片")]
+        public string ImageUrlText { get; set; }
+
+        [DataType(DataType.Currency, ErrorMessage = "输入的数据必须是货币类型")]
+        [Required(ErrorMessage = "请输入单价", AllowEmptyStrings = false)]
+        [Display(Name = "单价")]
+        public decimal? UnitPriceText { get; set; }
+
+        [Display(Name = "是否为新商品？")]
+        [Required(ErrorMessage = "请设置该商品是否为新商品")]
+        public bool? IsNewText { get; set; } 
+    }
+
+    public  partial class CategoryDto
+    {
+        [Required(ErrorMessage = "请输入商品分类名称", AllowEmptyStrings = false)]
+        [Display(Name = "分类名称")]
+        public string NameText { get; set; }
+
+        [Required(ErrorMessage = "请输入商品分类说明", AllowEmptyStrings = false)]
+        [Display(Name = "分类说明")]
+        [DataType(DataType.MultilineText)]
+        public string DescriptionText { get; set; } 
     }
 }
 

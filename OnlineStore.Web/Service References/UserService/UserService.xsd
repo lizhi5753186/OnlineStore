@@ -18,6 +18,7 @@
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RegisteredDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Role" nillable="true" type="tns:RoleDto" />
       <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -32,6 +33,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AddressDto" nillable="true" type="tns:AddressDto" />
+  <xs:complexType name="RoleDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoleDto" nillable="true" type="tns:RoleDto" />
   <xs:complexType name="FaultData">
     <xs:sequence>
       <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
@@ -46,14 +55,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfRoleDto" nillable="true" type="tns:ArrayOfRoleDto" />
-  <xs:complexType name="RoleDto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="RoleDto" nillable="true" type="tns:RoleDto" />
   <xs:complexType name="ArrayOfOrderDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDto" nillable="true" type="tns:OrderDto" />
@@ -62,7 +63,7 @@
   <xs:element name="ArrayOfOrderDto" nillable="true" type="tns:ArrayOfOrderDto" />
   <xs:complexType name="OrderDto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="DeliveredDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="DispatchedDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />

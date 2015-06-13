@@ -47,6 +47,12 @@ namespace OnlineStore.Application.ServiceImplementations
                 ForEach(p =>
                 {
                     var productDto = Mapper.Map<Product, ProductDto>(p);
+                    {
+                        var category = _productCategorizationRepository.GetCategoryForProduct(p);
+                        if (category != null)
+                            productDto.Category = Mapper.Map<Category, CategoryDto>(category);
+                    }
+
                     result.Add(productDto);
                 });
 

@@ -15,31 +15,31 @@
 {
     @Html.ValidationSummary(true)
     <div class="editor-label">
-        @Html.LabelFor(model => model.Name)
+        @Html.LabelFor(model => model.NameText)
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.Name)
-        @Html.ValidationMessageFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.NameText)
     </div>
 
     <div class="editor-label">
-        @Html.LabelFor(model => model.Description)
+        @Html.LabelFor(model => model.DescriptionText)
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.Description)
-        @Html.ValidationMessageFor(model => model.Description)
+        @Html.ValidationMessageFor(model => model.DescriptionText)
     </div>
 
     <div class="editor-label">
-        @Html.LabelFor(model => model.UnitPrice)
+        @Html.LabelFor(model => model.UnitPriceText)
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.UnitPrice)
-        @Html.ValidationMessageFor(model => model.UnitPrice)
+        @Html.ValidationMessageFor(model => model.UnitPriceText)
     </div>
 
     <div class="editor-label">
-        @Html.LabelFor(model => model.Category.Name)
+        @Html.LabelFor(model => model.Category.NameText)
     </div>
     <div class="editor-field">
         @Html.DropDownListFor(model => model.Category.Id, (IEnumerable<SelectListItem>)ViewData["categories"])
@@ -49,7 +49,7 @@
         <tr>
             <td>
                 <div class="editor-label" style="width: 140px;">
-                    @Html.LabelFor(model => model.ImageUrl)
+                    @Html.LabelFor(model => model.ImageUrlText)
                 </div>
             </td>
             <td>
@@ -69,11 +69,11 @@
     </table>
 
     <div class="editor-label">
-        @Html.LabelFor(model => model.IsNew)
+        @Html.LabelFor(model => model.IsNewText)
     </div>
     <div class="editor-field">
         @Html.EditorFor(model => model.IsNew)
-        @Html.ValidationMessageFor(model => model.IsNew)
+        @Html.ValidationMessageFor(model => model.IsNewText)
     </div>
 }
 

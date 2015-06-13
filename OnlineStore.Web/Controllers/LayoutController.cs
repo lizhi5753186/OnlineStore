@@ -46,7 +46,7 @@ namespace OnlineStore.Web.Controllers
                 return PartialView(newProducts);
             }
         }
-
+      
         //public ActionResult ProductsPartial(string categoryId = null)
         //{
         //    using (var proxy = new ProductServiceClient())

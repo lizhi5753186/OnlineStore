@@ -34,7 +34,7 @@
     </div>
     
     <div class="editor-label">
-        @Html.LabelFor(model => model.Role.Name)
+        @Html.LabelFor(model => model.RoleStr)
     </div>
     <div class="editor-field">
         @Html.DropDownListFor(model => model.Role.Id, (IEnumerable<SelectListItem>)ViewData["roles"])

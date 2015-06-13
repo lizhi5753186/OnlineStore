@@ -15,5 +15,12 @@ namespace OnlineStore.ServiceContracts.ModelDTOs
         public string PhoneNumber { get; set; }
         public AddressDto ContactAddress { get; set; }
         public AddressDto DeliveryAddress { get; set; }
+
+        public RoleDto Role { get; set; }
+
+        public override string ToString()
+        {
+            return this.UserName;
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace OnlineStore.Web.Controllers
     public class AdminController : ControllerBase
     {
         #region Common Utility Actions
+
+        // 保存图片到服务器指定目录下
         [NonAction]
         private void SaveFile(HttpPostedFileBase postedFile, string filePath, string saveName)
         {
@@ -36,6 +38,7 @@ namespace OnlineStore.Web.Controllers
             }
         }
 
+        // 图片上传功能的实现
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase fileData, string folder)
         {
@@ -43,7 +46,7 @@ namespace OnlineStore.Web.Controllers
             if (fileData != null)
             {
                 string ext = Path.GetExtension(fileData.FileName);
-                result = Guid.NewGuid().ToString().Replace('-', '_') + ext;
+                result = Guid.NewGuid()+ ext;
                 SaveFile(fileData, Url.Content("~/Images/Products/"), result);
             }
             return Content(result);
@@ -184,7 +187,7 @@ namespace OnlineStore.Web.Controllers
             {
                 if (string.IsNullOrEmpty(product.ImageUrl))
                 {
-                    var fileName = Guid.NewGuid().ToString() + ".png";
+                    var fileName = Guid.NewGuid() + ".png";
                     System.IO.File.Copy(Server.MapPath("~/Images/Products/ProductImage.png"), Server.MapPath(string.Format("~/Images/Products/{0}", fileName)));
                     product.ImageUrl = fileName;
                 }
