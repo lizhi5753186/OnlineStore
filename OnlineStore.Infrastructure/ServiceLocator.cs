@@ -28,7 +28,6 @@ namespace OnlineStore.Infrastructure
                 
                 throw;
             }
-            
         }
 
         public static ServiceLocator Instance

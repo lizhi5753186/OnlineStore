@@ -4,7 +4,9 @@ using Microsoft.Practices.EnterpriseLibrary.Caching;
 namespace OnlineStore.Infrastructure.Caching
 {
     // 表示基于Microsoft Patterns & Practices - Enterprise Library Caching Application Block的缓存机制的实现
-    // 该类简单理解为对Enterprise Library Caching中的CacheManager封装，
+    // 该类简单理解为对Enterprise Library Caching中的CacheManager封装
+    // 该缓存实现不支持分布式缓存，更多信息参考: 
+    // http://stackoverflow.com/questions/7799664/enterpriselibrary-caching-in-load-balance 
     public class EntLibCacheProvider : ICacheProvider
     {
         // 获得CacheManager实例，该实例的注册通过cachingConfiguration进行注册进去的，具体看配置文件

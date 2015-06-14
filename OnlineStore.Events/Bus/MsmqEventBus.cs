@@ -16,8 +16,6 @@ namespace OnlineStore.Events.Bus
         private volatile bool _committed = true;
         private readonly bool _useInternalTransaction;
         private readonly MessageQueue _messageQueue;
-        private readonly object _lockObj = new object();
-        private readonly MsmqBusOptions _options = null;
         private readonly IEventAggregator _aggregator;
         private readonly MethodInfo _publishMethod;
 
@@ -25,23 +23,26 @@ namespace OnlineStore.Events.Bus
 
         #region Ctor
 
-        public MsmqEventBus(string path, IEventAggregator aggregator)
+        public MsmqEventBus(string path)
         {
-            this._aggregator = aggregator;
-           
-            _publishMethod = (from m in aggregator.GetType().GetMethods()
+            this._aggregator = ServiceLocator.Instance.GetService<IEventAggregator>();
+
+            _publishMethod = (from m in _aggregator.GetType().GetMethods()
                 let parameters = m.GetParameters()
                 let methodName = m.Name
                 where methodName == "Handle" &&
                       parameters != null &&
                       parameters.Length == 1
                 select m).First();
-            this._options = new MsmqBusOptions(path);
+            var options = new MsmqBusOptions(path);
 
+            // 初始化消息队列对象
+            // 更多信息参考：https://msdn.microsoft.com/zh-cn/library/System.Messaging.MessageQueue(v=vs.110).aspx 
             this._messageQueue = new MessageQueue(path,
-                _options.SharedModeDenyReceive,
-                _options.EnableCache, _options.QueueAccessMode) {Formatter = _options.MessageFormatter};
-            this._useInternalTransaction = _options.UseInternalTransaction && _messageQueue.Transactional;
+                options.SharedModeDenyReceive,
+                options.EnableCache, options.QueueAccessMode);
+
+            this._useInternalTransaction = options.UseInternalTransaction && _messageQueue.Transactional;
         }
 
         #endregion
@@ -55,69 +56,62 @@ namespace OnlineStore.Events.Bus
 
         public void Publish<TMessage>(TMessage message) where TMessage : class, IEvent
         {
-            lock (_lockObj)
-            {
-                _messageQueue.Send(message);
-                _committed = false;
-            }
+            var msmqMessage = new Message(message) { Formatter = new XmlMessageFormatter(new[] { message.GetType() }), Label = message.GetType().ToString()};
+            _messageQueue.Send(msmqMessage);
+            _committed = false;
         }
 
         public void Publish<TMessage>(IEnumerable<TMessage> messages) where TMessage : class, IEvent
         {
-            lock (_lockObj)
+            messages.ToList().ForEach(m =>
             {
-                messages.ToList().ForEach(m =>
-                {
-                    _messageQueue.Send(m);
-                    _committed = false;
-                });
-            }
+                _messageQueue.Send(m);
+                _committed = false;
+            });
         }
 
         public void Clear()
         {
-            lock (_lockObj)
-            {
-                this._messageQueue.Close();
-            }
+            this._messageQueue.Close();
         }
 
         public void Commit()
         {
-            lock (_lockObj)
+            if (this._useInternalTransaction)
             {
-                if (this._useInternalTransaction)
+                using (var transaction = new MessageQueueTransaction())
                 {
-                    using (var transaction = new MessageQueueTransaction())
+                    try
                     {
-                        try
+                        transaction.Begin();
+                        var message = _messageQueue.Receive();
+                        if (message != null)
                         {
-                            transaction.Begin();
-                            var evnt = _messageQueue.Receive();
-                            if (evnt != null)
-                            {
-                                var evntType = evnt.GetType();
-                                var method = _publishMethod.MakeGenericMethod(evntType);
-                                method.Invoke(_aggregator, new object[] { evnt });
-                                transaction.Commit();
-                            }
+                            message.Formatter = new XmlMessageFormatter(new[] { typeof(string) });
+                            var evntType = ConvertStringToType(message.Body.ToString());
+                            var method = _publishMethod.MakeGenericMethod(evntType);
+                            var evnt = Activator.CreateInstance(evntType);
+                            method.Invoke(_aggregator, new object[] { evnt });
+
+                            transaction.Commit();
                         }
-                        catch
-                        {
-                            transaction.Abort();
-                            throw;
-                        }
+                    }
+                    catch
+                    {
+                        transaction.Abort();
+                        throw;
                     }
                 }
-                else
+            }
+            else
+            {
+                var message = _messageQueue.Receive();
+                if (message != null)
                 {
-                    var evnt = _messageQueue.Receive();
-                    if (evnt != null)
-                    {
-                        var evntType = evnt.GetType();
-                        var method = _publishMethod.MakeGenericMethod(evntType);
-                        method.Invoke(_aggregator, new object[] { evnt });
-                    }
+                    message.Formatter = new XmlMessageFormatter(new[] { ConvertStringToType(message.Label) });
+                    var evntType =message.Body.GetType();
+                    var method = _publishMethod.MakeGenericMethod(evntType);
+                    method.Invoke(_aggregator, new object[] { message.Body });
                 }
             }
 
@@ -138,5 +132,10 @@ namespace OnlineStore.Events.Bus
         }
 
         #endregion
+
+        private Type ConvertStringToType(string sourceStr)
+        {
+            return Type.GetType(sourceStr + ", OnlineStore.Domain");
+        }
     }
 }

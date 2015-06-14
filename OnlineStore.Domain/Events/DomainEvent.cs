@@ -13,6 +13,9 @@ namespace OnlineStore.Domain.Events
     {
         #region Private Fields
         private readonly IEntity _source;
+        private Guid _id = Guid.NewGuid();
+        private DateTime _timeStamp = DateTime.UtcNow;
+
         #endregion 
 
         #region Ctor
@@ -36,14 +39,14 @@ namespace OnlineStore.Domain.Events
 
         public Guid Id
         {
-            get { return Guid.NewGuid(); }
-            set { Id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         public DateTime TimeStamp
         {
-            get { return DateTime.UtcNow; }
-            set { TimeStamp = value; }
+            get { return _timeStamp; }
+            set { _timeStamp = value; }
         }
         #endregion 
 
