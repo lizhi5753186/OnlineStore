@@ -1,5 +1,6 @@
 ﻿namespace OnlineStore.Infrastructure.Caching
 {
+    // 缓存接口的定义
     public interface ICacheProvider
     {
         /// <summary>

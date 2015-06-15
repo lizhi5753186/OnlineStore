@@ -56,6 +56,7 @@ namespace OnlineStore.Events.Bus
 
         public void Publish<TMessage>(TMessage message) where TMessage : class, IEvent
         {
+            // 将消息放入Message中Body属性进行序列化发送到消息队列中
             var msmqMessage = new Message(message) { Formatter = new XmlMessageFormatter(new[] { message.GetType() }), Label = message.GetType().ToString()};
             _messageQueue.Send(msmqMessage);
             _committed = false;
@@ -105,10 +106,15 @@ namespace OnlineStore.Events.Bus
             }
             else
             {
+                // 从msmq消息队列中出队，此时获得的对象是消息对象
                 var message = _messageQueue.Receive();
                 if (message != null)
                 {
+                    // 指定反序列化的对象，由于我们之前把对应的事件类型保存在MessageQueue中的Label属性
+                    // 所以此时可以通过Label属性来获得目标序列化类型
                     message.Formatter = new XmlMessageFormatter(new[] { ConvertStringToType(message.Label) });
+                    
+                    // 这样message.Body获得就是对应的事件对象，后面的处理逻辑就和EventBus一样了
                     var evntType =message.Body.GetType();
                     var method = _publishMethod.MakeGenericMethod(evntType);
                     method.Invoke(_aggregator, new object[] { message.Body });
