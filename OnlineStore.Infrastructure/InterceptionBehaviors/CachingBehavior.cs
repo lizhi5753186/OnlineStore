@@ -6,6 +6,7 @@ using System.Text;
 
 namespace OnlineStore.Infrastructure.InterceptionBehaviors
 {
+    // 缓存AOP的实现
     public class CachingBehavior : IInterceptionBehavior
     {
         private readonly ICacheProvider _cacheProvider;
@@ -120,6 +121,7 @@ namespace OnlineStore.Infrastructure.InterceptionBehaviors
                                 _cacheProvider.Remove(removeKey);
                         }
 
+                        // 执行具体截获的方法
                         var methodReturn = getNext().Invoke(input, getNext);
                         return methodReturn;
                     }

@@ -9,7 +9,7 @@ namespace OnlineStore.Web
 {
     public class MvcSiteMap
     {
-        private static MvcSiteMap _instance = new MvcSiteMap();
+        private static readonly MvcSiteMap _instance = new MvcSiteMap();
 
         private static readonly XDocument Doc = XDocument.Load(HttpContext.Current.Server.MapPath(@"~/SiteMap.xml"));
 
@@ -103,7 +103,7 @@ namespace OnlineStore.Web
         {
             var sb = new StringBuilder();
             var tc = new TagBuilder("span");
-            tc.SetInnerText(">>");
+            tc.SetInnerText(">");
             var sp = tc.ToString();
             var count = m.Count;
             for (var x = 1; x <= count; x++)
