@@ -31,7 +31,6 @@ Online Store项目涵盖了以下模式和设计思想：
  <br>
 运行Online Store案例
 ===
-<br>
 先决条件
 ----
 本案例使用Visual Studio 2012开发，因此，要编译本案例的源代码程序，则需要首先安装Visual Studio 2012。由于数据库采用了SQL Server Express LocalDB，因此，这部分组件也需要正确安装（如果是选择完整安装Visual Studio 2012，则可以忽略LocalDB的安装）。 另外，Online Store提供了两种事件总线（Event Bus）的实现：一种是面向事件聚合器（Event Aggregator）的，它将把所获得的事件通过聚合器派发到一个或多个事件处理器上；另一种是面向微软MSMQ的，它将把所获得的事件直接派发到MSMQ队列中，如果采用这种事件总线，则需要在机器上安装和配置MSMQ组件，并确保新建的队列是事务型队列。 此外，无需安装其它组件。
